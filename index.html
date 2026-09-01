@@ -1,247 +1,1360 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-  <!-- seo -->
-    <meta name="author" content="GT26RS 'gt26rs'">
-    <meta name="description" content="gt26rs">
-    <meta name="keywords" content="gaming,android,games">
-
-    <!-- open graph -->
-    <meta property="og:title" content="gt26rs">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://gt26rs.com/bird1.png">
-    <meta property="og:description"
-        content="GT26RS">
-    <meta property="og:url" content="https://gt26rs.com">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="gt26rs.com">
-
-    <!-- display -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jumpy Game</title>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6296010588521757"
-     crossorigin="anonymous"></script>
+    <title>GT26RS | Gaming Community</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      overflow-x: hidden;
-    }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    .glass {
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    }
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 
-    header { padding: 20px; display: flex; justify-content: space-between; }
-    .logo { font-size: 28px; font-weight: bold; letter-spacing: 2px; }
+    <style>
 
-    .hero {
-      height: 90vh; /* allows next section peek */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+        /* ========================================
+           RESET
+        ======================================== */
 
-    .hero h1 {
-      font-size: 64px;
-      background: linear-gradient(90deg, #00f2fe, #4facfe);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      z-index: 2;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .hero p { margin-top: 20px; opacity: 0.85; z-index: 2; }
 
-    .hero img.main-bird {
-      width: 180px;
-      margin-bottom: 20px;
-      animation: floatBird 3s infinite ease-in-out;
-      z-index: 2;
-    }
+        /* ========================================
+           VARIABLES
+        ======================================== */
 
-    @keyframes floatBird {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
+        :root {
 
-    /* Floating creatures */
-    .floating {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.8;
-      animation: drift linear infinite;
-    }
+            --red: #ff2035;
+            --red-dark: #8b0010;
 
-    @keyframes drift {
-      0% { transform: translateY(0) translateX(0) rotate(0deg); }
-      50% { transform: translateY(-60px) translateX(40px) rotate(10deg); }
-      100% { transform: translateY(0) translateX(0) rotate(0deg); }
-    }
+            --bg: #020405;
 
-    /* Dreamy scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 3;
-      animation: glowPulse 2s infinite ease-in-out;
-    }
+            --text: #ffffff;
+            --muted: rgba(255,255,255,0.55);
 
-    .scroll-indicator span {
-      font-size: 14px;
-      opacity: 0.8;
-      letter-spacing: 2px;
-    }
+            --facebook: #1877f2;
+            --instagram: #ff3cac;
+            --youtube: #ff2035;
+            --x: #ffffff;
+            --threads: #c45cff;
+        }
 
-    .scroll-indicator .arrow {
-      font-size: 26px;
-      margin-top: 5px;
-      display: block;
-      animation: bounce 1.5s infinite;
-      text-shadow: 0 0 10px #00f2fe, 0 0 20px #4facfe;
-    }
 
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
+        /* ========================================
+           BODY
+        ======================================== */
 
-    @keyframes glowPulse {
-      0%,100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
+        body {
 
-    /* gradient fade */
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 120px;
-      background: linear-gradient(transparent, #203a43);
-    }
+            min-height: 100vh;
 
-    .section { padding: 80px 20px; display: flex; justify-content: center; }
-    .card { width: 90%; max-width: 1000px; padding: 40px; }
+            color: var(--text);
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
+            font-family: "Rajdhani", sans-serif;
 
-    .feature-box {
-      padding: 20px;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.05);
-      transition: 0.3s;
-      text-align: center;
-    }
+            background:
+                radial-gradient(
+                    circle at 50% 35%,
+                    rgba(255, 20, 40, 0.10),
+                    transparent 30%
+                ),
 
-    .feature-box img { width: 60px; margin-bottom: 10px; }
-    .feature-box:hover { transform: translateY(-10px); }
+                radial-gradient(
+                    circle at 15% 90%,
+                    rgba(255, 0, 30, 0.08),
+                    transparent 35%
+                ),
 
-    footer { text-align: center; padding: 30px; opacity: 0.7; }
-  </style>
+                #020405;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ========================================
+           CINEMATIC BACKGROUND
+        ======================================== */
+
+        .background {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+        }
+
+
+        /* Dark cinematic vignette */
+
+        .background::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 20%,
+                    rgba(0,0,0,0.75) 85%
+                );
+        }
+
+
+        /* Red glow */
+
+        .red-glow {
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,0,30,0.08),
+                    transparent 65%
+                );
+
+            filter: blur(30px);
+        }
+
+
+        /* ========================================
+           GRID
+        ======================================== */
+
+        .grid {
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: 0.18;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 85%
+                );
+        }
+
+
+        /* ========================================
+           PARTICLES
+        ======================================== */
+
+        .particle {
+
+            position: absolute;
+
+            width: 2px;
+            height: 2px;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 8px var(--red);
+
+            opacity: 0.5;
+
+            animation: particleMove 8s linear infinite;
+        }
+
+
+        .particle:nth-child(1) {
+            left: 10%;
+            top: 80%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(2) {
+            left: 22%;
+            top: 95%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(3) {
+            left: 38%;
+            top: 75%;
+            animation-delay: 5s;
+        }
+
+        .particle:nth-child(4) {
+            left: 60%;
+            top: 90%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(5) {
+            left: 75%;
+            top: 80%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(6) {
+            left: 90%;
+            top: 95%;
+            animation-delay: 0s;
+        }
+
+
+        @keyframes particleMove {
+
+            from {
+
+                transform:
+                    translateY(0)
+                    translateX(0);
+
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.7;
+            }
+
+            to {
+
+                transform:
+                    translateY(-100vh)
+                    translateX(100px);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* ========================================
+           PAGE
+        ======================================== */
+
+        .page {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: min(1400px, 92%);
+
+            min-height: 100vh;
+
+            margin: auto;
+
+            padding: 30px 0;
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        /* ========================================
+           HEADER
+        ======================================== */
+
+        header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 70px;
+        }
+
+
+        .brand {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 25px;
+
+            font-weight: 900;
+
+            font-style: italic;
+
+            letter-spacing: 2px;
+
+            color: var(--red);
+
+            text-shadow:
+                0 0 15px rgba(255,0,30,0.45);
+        }
+
+
+        .brand span {
+            color: white;
+        }
+
+
+        /* Gaming HUD icon */
+
+        .hud {
+
+            width: 54px;
+            height: 54px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: 1px solid rgba(255,255,255,0.2);
+
+            border-radius: 14px;
+
+            background:
+                rgba(10,12,15,0.7);
+
+            box-shadow:
+                inset 0 0 20px rgba(255,255,255,0.02),
+                0 0 25px rgba(255,0,30,0.08);
+
+            font-size: 21px;
+
+            color: white;
+        }
+
+
+        /* ========================================
+           HERO
+        ======================================== */
+
+        .hero {
+
+            text-align: center;
+
+            margin-bottom: 65px;
+        }
+
+
+        .status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 7px 15px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid rgba(255,30,45,0.35);
+
+            border-radius: 50px;
+
+            background:
+                rgba(255,20,35,0.06);
+
+            color: rgba(255,255,255,0.7);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .status-dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 10px var(--red);
+
+            animation: pulse 1.5s infinite;
+        }
+
+
+        @keyframes pulse {
+
+            0%,100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+
+
+        .logo {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(55px, 9vw, 105px);
+
+            font-weight: 900;
+
+            font-style: italic;
+
+            letter-spacing: 5px;
+
+            line-height: 0.95;
+
+            color: white;
+
+            text-shadow:
+                0 0 30px rgba(255,255,255,0.08);
+        }
+
+
+        .logo span {
+
+            color: var(--red);
+
+            text-shadow:
+                0 0 15px rgba(255,0,30,0.7),
+                0 0 45px rgba(255,0,30,0.25);
+        }
+
+
+        .tagline {
+
+            margin-top: 20px;
+
+            color: rgba(255,255,255,0.7);
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 13px;
+
+            letter-spacing: 6px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ========================================
+           SOCIAL GRID
+        ======================================== */
+
+        .social-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 18px;
+        }
+
+
+        /* ========================================
+           SOCIAL CARD
+        ======================================== */
+
+        .social-card {
+
+            --accent: white;
+            --glow: rgba(255,255,255,0.15);
+
+            position: relative;
+
+            min-height: 370px;
+
+            padding: 32px 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(20,24,30,0.88),
+                    rgba(3,5,8,0.96)
+                );
+
+            border: 1px solid rgba(255,255,255,0.13);
+
+            clip-path: polygon(
+                0 20px,
+                20px 0,
+                calc(100% - 20px) 0,
+                100% 20px,
+                100% calc(100% - 20px),
+                calc(100% - 20px) 100%,
+                20px 100%,
+                0 calc(100% - 20px)
+            );
+
+            overflow: hidden;
+
+            transition:
+                transform 0.4s cubic-bezier(.2,.8,.2,1),
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+
+        /* Card top accent */
+
+        .social-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 20px;
+            right: 20px;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--accent),
+                    transparent
+                );
+
+            opacity: 0.55;
+        }
+
+
+        /* Hover light sweep */
+
+        .social-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 150%;
+
+            top: -25%;
+
+            left: -120px;
+
+            transform: rotate(20deg);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.08),
+                    transparent
+                );
+
+            transition:
+                left 0.7s ease;
+        }
+
+
+        .social-card:hover::after {
+
+            left: 130%;
+        }
+
+
+        .social-card:hover {
+
+            transform: translateY(-14px) scale(1.015);
+
+            border-color: var(--accent);
+
+            box-shadow:
+
+                0 25px 55px rgba(0,0,0,0.65),
+
+                0 0 35px var(--glow);
+        }
+
+
+        /* ========================================
+           ICON
+        ======================================== */
+
+        .icon-box {
+
+            width: 105px;
+            height: 105px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 20px;
+
+            background:
+                rgba(8,11,15,0.9);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            color: var(--accent);
+
+            font-size: 46px;
+
+            box-shadow:
+
+                inset 0 0 30px rgba(255,255,255,0.025),
+
+                0 0 25px var(--glow);
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease;
+        }
+
+
+        .social-card:hover .icon-box {
+
+            transform:
+                scale(1.08)
+                rotate(-2deg);
+
+            box-shadow:
+
+                inset 0 0 30px rgba(255,255,255,0.03),
+
+                0 0 45px var(--glow);
+        }
+
+
+        /* ========================================
+           CARD CONTENT
+        ======================================== */
+
+        .card-content {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .card-content h2 {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 16px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .card-content p {
+
+            color: var(--muted);
+
+            font-size: 15px;
+
+            line-height: 1.45;
+
+            max-width: 170px;
+        }
+
+
+        /* ========================================
+           BUTTON
+        ======================================== */
+
+        .connect {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 125px;
+            height: 38px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: 1px solid var(--accent);
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            background:
+                rgba(0,0,0,0.35);
+
+            clip-path: polygon(
+                10px 0,
+                calc(100% - 10px) 0,
+                100% 50%,
+                calc(100% - 10px) 100%,
+                10px 100%,
+                0 50%
+            );
+
+            transition: 0.3s ease;
+        }
+
+
+        .social-card:hover .connect {
+
+            background: var(--accent);
+
+            color: #000;
+
+            box-shadow:
+                0 0 25px var(--glow);
+        }
+
+
+        /* ========================================
+           PLATFORM THEMES
+        ======================================== */
+
+        .facebook {
+
+            --accent: var(--facebook);
+
+            --glow:
+                rgba(24,119,242,0.35);
+        }
+
+
+        .instagram {
+
+            --accent: var(--instagram);
+
+            --glow:
+                rgba(255,60,172,0.35);
+        }
+
+
+        .youtube {
+
+            --accent: var(--youtube);
+
+            --glow:
+                rgba(255,30,45,0.35);
+        }
+
+
+        .x {
+
+            --accent: var(--x);
+
+            --glow:
+                rgba(255,255,255,0.18);
+        }
+
+
+        .threads {
+
+            --accent: var(--threads);
+
+            --glow:
+                rgba(196,92,255,0.35);
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        footer {
+
+            margin-top: auto;
+
+            padding-top: 60px;
+
+            padding-bottom: 15px;
+
+            text-align: center;
+
+            color: rgba(255,255,255,0.45);
+
+            font-size: 15px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .footer-line {
+
+            width: 100px;
+            height: 2px;
+
+            margin: 15px auto 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--red),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 12px var(--red);
+        }
+
+
+        /* ========================================
+           ACCESSIBILITY
+        ======================================== */
+
+        .social-card:focus-visible {
+
+            outline: 2px solid white;
+
+            outline-offset: 5px;
+        }
+
+
+        /* ========================================
+           TABLET
+        ======================================== */
+
+        @media (max-width: 1100px) {
+
+            .social-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .social-card {
+
+                min-height: 330px;
+            }
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 700px) {
+
+            .page {
+
+                width: 90%;
+
+                padding-top: 22px;
+            }
+
+
+            header {
+
+                margin-bottom: 45px;
+            }
+
+
+            .brand {
+
+                font-size: 20px;
+            }
+
+
+            .hud {
+
+                width: 45px;
+                height: 45px;
+
+                font-size: 18px;
+            }
+
+
+            .hero {
+
+                margin-bottom: 40px;
+            }
+
+
+            .status {
+
+                font-size: 10px;
+
+                letter-spacing: 1.5px;
+            }
+
+
+            .logo {
+
+                font-size: 52px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .tagline {
+
+                font-size: 10px;
+
+                letter-spacing: 3px;
+
+                line-height: 1.5;
+            }
+
+
+            .social-grid {
+
+                grid-template-columns: 1fr;
+
+                gap: 14px;
+            }
+
+
+            .social-card {
+
+                min-height: 230px;
+
+                padding: 25px 20px;
+
+                display: grid;
+
+                grid-template-columns:
+                    75px 1fr auto;
+
+                gap: 18px;
+
+                align-items: center;
+
+                text-align: left;
+
+                clip-path: none;
+
+                border-radius: 14px;
+            }
+
+
+            .icon-box {
+
+                width: 70px;
+                height: 70px;
+
+                border-radius: 14px;
+
+                font-size: 30px;
+            }
+
+
+            .card-content h2 {
+
+                font-size: 13px;
+            }
+
+
+            .card-content p {
+
+                font-size: 13px;
+
+                max-width: none;
+            }
+
+
+            .connect {
+
+                width: 95px;
+
+                font-size: 11px;
+            }
+
+
+            footer {
+
+                padding-top: 45px;
+
+                padding-bottom: 15px;
+            }
+        }
+
+
+        /* ========================================
+           SMALL MOBILE
+        ======================================== */
+
+        @media (max-width: 480px) {
+
+            .social-card {
+
+                grid-template-columns:
+                    60px 1fr;
+            }
+
+
+            .icon-box {
+
+                width: 60px;
+                height: 60px;
+
+                font-size: 25px;
+            }
+
+
+            .connect {
+
+                grid-column: 2;
+
+                width: 105px;
+            }
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-  <header>
-    <div class="logo">JUMPY</div>
-  </header>
 
-  <section class="hero" id="hero">
-    <img src="bird1.png" class="main-bird" alt="Bird">
-    <h1>Fly. Dodge. Survive.</h1>
-    <p>Collect fruits 🍑 and avoid wolves 🐺</p>
+    <!-- ========================================
+         BACKGROUND
+    ======================================== -->
 
-    <div class="scroll-indicator">
-      <span>SCROLL</span>
-      <div class="arrow">⬇</div>
+    <div class="background">
+
+        <div class="grid"></div>
+
+        <div class="red-glow"></div>
+
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+
     </div>
-  </section>
 
-  <section class="section">
-    <div class="card glass">
-      <h2>About the Game</h2>
-      <p style="margin-top:20px; opacity:0.8;">
-        Control your bird, collect fruits, and avoid deadly wolves. The longer you survive, the higher your score.
-      </p>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="card glass">
-      <h2>Features</h2>
-      <div class="features">
-        <div class="feature-box">
-          <img src="bird1.png">
-          Smooth Bird Movement
-        </div>
-        <div class="feature-box">
-          <img src="f_29.png">
-          Fruit Collection System
-        </div>
-        <div class="feature-box">
-          <img src="wolf_16.png">
-          Enemy Avoidance
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- ========================================
+         PAGE
+    ======================================== -->
 
-  <footer>© 2026 Jumpy Game</footer>
+    <main class="page">
 
-  <script>
-    const hero = document.getElementById('hero');
 
-    const assets = ['f_01.png', 'f_02.png', 'f_03.png', 'f_04.png', 'f_05.png', 'f_06.png', 'f_07.png', 'f_08.png', 'f_09.png', 'f_10.png', 'f_11.png', 'f_12.png', 'f_13.png', 'f_14.png', 'f_15.png', 'f_29.png', 'wolf_16.png'];
+        <!-- HEADER -->
 
-    function createFloating() {
-      const el = document.createElement('img');
-      el.src = assets[Math.floor(Math.random() * assets.length)];
-      el.className = 'floating';
+        <header>
 
-      const size = Math.random() * 60 + 40;
-      el.style.width = size + 'px';
+            <div class="brand">
+                GT<span>26</span>RS
+            </div>
 
-      el.style.left = Math.random() * 100 + '%';
-      el.style.top = Math.random() * 100 + '%';
+            <div class="hud">
 
-      const duration = Math.random() * 10 + 8;
-      el.style.animationDuration = duration + 's';
+                <i class="fa-solid fa-gamepad"></i>
 
-      hero.appendChild(el);
-    }
+            </div>
 
-    // create multiple floating elements
-    for (let i = 0; i < 12; i++) {
-      createFloating();
-    }
+        </header>
 
-    // subtle auto scroll hint
-    setTimeout(() => {
-      window.scrollBy({ top: 80, behavior: 'smooth' });
-    }, 2500);
-  </script>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Gaming Community
+
+            </div>
+
+
+            <h1 class="logo">
+
+                GT<span>26</span>RS
+
+            </h1>
+
+
+            <p class="tagline">
+
+                Level Up. Stay Connected.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             SOCIAL LINKS
+        ======================================== -->
+
+        <section class="social-grid">
+
+
+            <!-- FACEBOOK -->
+
+            <a
+                href="https://facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-card facebook"
+                aria-label="Visit GT26RS on Facebook"
+            >
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-facebook-f"></i>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h2>FACEBOOK</h2>
+
+                    <p>
+                        Join the community
+                        and stay updated.
+                    </p>
+
+                </div>
+
+
+                <div class="connect">
+                    CONNECT
+                </div>
+
+            </a>
+
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-card instagram"
+                aria-label="Visit GT26RS on Instagram"
+            >
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h2>INSTAGRAM</h2>
+
+                    <p>
+                        Behind the scenes,
+                        clips and updates.
+                    </p>
+
+                </div>
+
+
+                <div class="connect">
+                    FOLLOW
+                </div>
+
+            </a>
+
+
+
+            <!-- YOUTUBE -->
+
+            <a
+                href="https://youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-card youtube"
+                aria-label="Visit GT26RS on YouTube"
+            >
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-youtube"></i>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h2>YOUTUBE</h2>
+
+                    <p>
+                        Gameplay, videos,
+                        walkthroughs and more.
+                    </p>
+
+                </div>
+
+
+                <div class="connect">
+                    SUBSCRIBE
+                </div>
+
+            </a>
+
+
+
+            <!-- X -->
+
+            <a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-card x"
+                aria-label="Visit GT26RS on X"
+            >
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-x-twitter"></i>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h2>X / TWITTER</h2>
+
+                    <p>
+                        Quick updates,
+                        news and announcements.
+                    </p>
+
+                </div>
+
+
+                <div class="connect">
+                    FOLLOW
+                </div>
+
+            </a>
+
+
+
+            <!-- THREADS -->
+
+            <a
+                href="https://threads.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-card threads"
+                aria-label="Visit GT26RS on Threads"
+            >
+
+                <div class="icon-box">
+
+                    <i class="fa-brands fa-threads"></i>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h2>THREADS</h2>
+
+                    <p>
+                        Join the conversation
+                        with the community.
+                    </p>
+
+                </div>
+
+
+                <div class="connect">
+                    CONNECT
+                </div>
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            Thanks for being part of the journey!
+
+            <div class="footer-line"></div>
+
+        </footer>
+
+
+    </main>
 
 </body>
+
 </html>
