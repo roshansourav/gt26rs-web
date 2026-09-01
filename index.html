@@ -2,15 +2,13 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GT26RS | Gaming • Racing • Development</title>
+    <title>GT26RS | Gaming • Racing • Game Development</title>
 
-    <!-- =====================================================
-         FONTS
-    ====================================================== -->
-
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -19,21 +17,13 @@
         rel="stylesheet"
     >
 
-    <!-- =====================================================
-         FONT AWESOME
-    ====================================================== -->
-
+    <!-- Icons -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-
     <style>
-
-        /* =====================================================
-           RESET
-        ====================================================== */
 
         * {
             margin: 0;
@@ -45,163 +35,117 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            min-height: 100vh;
-
-            background: #020405;
-
-            color: #ffffff;
-
-            font-family: "Rajdhani", sans-serif;
-
-            overflow-x: hidden;
-        }
-
-
-        /* =====================================================
-           VARIABLES
-        ====================================================== */
-
         :root {
-
             --red: #ff2035;
-            --red-soft: #ff4352;
+            --red-soft: #ff4657;
 
             --blue: #1877f2;
             --pink: #ff3cac;
             --purple: #c45cff;
 
-            --white: #ffffff;
-
             --bg: #020405;
 
-            --card: rgba(8, 11, 15, 0.90);
-
-            --muted: rgba(255,255,255,0.58);
+            --muted: rgba(255,255,255,.58);
         }
 
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: #fff;
+            font-family: "Rajdhani", sans-serif;
+            overflow-x: hidden;
+        }
 
         /* =====================================================
-           BACKGROUND
+           GLOBAL BACKGROUND
         ====================================================== */
 
         .background {
-
             position: fixed;
-
             inset: 0;
-
             z-index: -10;
-
-            overflow: hidden;
-
             background: #020405;
+            overflow: hidden;
         }
 
-
         .background-image {
-
             position: absolute;
-
             inset: 0;
 
             background-image:
-
                 linear-gradient(
                     90deg,
-                    rgba(0,0,0,0.92) 0%,
-                    rgba(0,0,0,0.72) 38%,
-                    rgba(0,0,0,0.82) 100%
+                    rgba(0,0,0,.90),
+                    rgba(0,0,0,.66) 40%,
+                    rgba(0,0,0,.84)
                 ),
-
                 linear-gradient(
                     0deg,
                     #020405 0%,
-                    transparent 65%,
-                    rgba(0,0,0,0.35) 100%
+                    transparent 62%,
+                    rgba(0,0,0,.35) 100%
                 ),
-
                 url("https://images.unsplash.com/photo-1628519592419-bf288f08cef5?auto=format&fit=crop&fm=jpg&q=85&w=2400");
 
             background-size: cover;
-
             background-position: center;
 
-            filter: saturate(0.75);
-
+            filter: saturate(.76);
             transform: scale(1.04);
         }
 
-
         .background-overlay {
-
             position: absolute;
-
             inset: 0;
 
             background:
-
                 radial-gradient(
-                    circle at center,
+                    ellipse at center,
                     transparent 15%,
-                    rgba(0,0,0,0.4) 55%,
-                    rgba(0,0,0,0.92) 100%
+                    rgba(0,0,0,.4) 58%,
+                    rgba(0,0,0,.92) 100%
                 );
         }
 
-
         .red-glow {
-
             position: absolute;
 
             width: 900px;
-
             height: 900px;
 
             left: 50%;
-
             top: 35%;
 
             transform: translate(-50%, -50%);
 
             background:
-
                 radial-gradient(
                     circle,
-                    rgba(255,0,30,0.12),
-                    transparent 68%
+                    rgba(255,0,35,.12),
+                    transparent 67%
                 );
 
-            filter: blur(40px);
+            filter: blur(42px);
         }
 
-
-        /* =====================================================
-           TECH GRID
-        ====================================================== */
-
         .tech-grid {
-
             position: absolute;
-
             inset: 0;
 
             background-image:
-
                 linear-gradient(
-                    rgba(255,255,255,0.025) 1px,
+                    rgba(255,255,255,.02) 1px,
                     transparent 1px
                 ),
-
                 linear-gradient(
                     90deg,
-                    rgba(255,255,255,0.025) 1px,
+                    rgba(255,255,255,.02) 1px,
                     transparent 1px
                 );
 
             background-size: 55px 55px;
 
-            opacity: 0.18;
+            opacity: .18;
 
             mask-image:
                 linear-gradient(
@@ -211,31 +155,26 @@
                 );
         }
 
-
         /* =====================================================
            PARTICLES
         ====================================================== */
 
         .particle {
-
             position: fixed;
 
             width: 2px;
-
             height: 2px;
 
             background: var(--red);
 
-            box-shadow:
-                0 0 10px var(--red);
+            box-shadow: 0 0 10px var(--red);
 
             opacity: 0;
 
-            animation: particleMove 8s linear infinite;
-
             z-index: -2;
-        }
 
+            animation: particleMove 8s linear infinite;
+        }
 
         .particle:nth-child(1) {
             left: 8%;
@@ -250,13 +189,13 @@
         }
 
         .particle:nth-child(3) {
-            left: 37%;
+            left: 38%;
             bottom: -10px;
             animation-delay: 4s;
         }
 
         .particle:nth-child(4) {
-            left: 57%;
+            left: 58%;
             bottom: -10px;
             animation-delay: 1s;
         }
@@ -273,108 +212,78 @@
             animation-delay: 5s;
         }
 
-
         @keyframes particleMove {
 
             0% {
-                transform:
-                    translateY(0)
-                    translateX(0);
-
+                transform: translateY(0) translateX(0);
                 opacity: 0;
             }
 
             15% {
-                opacity: 0.8;
+                opacity: .8;
             }
 
             80% {
-                opacity: 0.3;
+                opacity: .3;
             }
 
             100% {
-                transform:
-                    translateY(-100vh)
-                    translateX(100px);
-
+                transform: translateY(-100vh) translateX(100px);
                 opacity: 0;
             }
         }
-
 
         /* =====================================================
            CONTAINER
         ====================================================== */
 
         .container {
-
             width: min(1380px, 92%);
-
             margin: auto;
         }
-
 
         /* =====================================================
            HEADER
         ====================================================== */
 
         header {
-
-            height: 90px;
+            height: 88px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
         }
 
-
         .brand {
-
             font-family: "Orbitron", sans-serif;
 
             font-size: 25px;
-
             font-weight: 900;
-
             font-style: italic;
 
             letter-spacing: 2px;
-
-            color: white;
         }
-
 
         .brand span {
             color: var(--red);
         }
 
-
         .header-right {
-
             display: flex;
-
             align-items: center;
-
             gap: 12px;
         }
 
-
         .header-status {
-
             display: flex;
-
             align-items: center;
-
             gap: 9px;
 
             padding: 9px 17px;
 
-            border: 1px solid rgba(255,30,50,0.35);
+            border: 1px solid rgba(255,32,53,.35);
 
-            background:
-                rgba(0,0,0,0.45);
+            background: rgba(0,0,0,.42);
 
             clip-path: polygon(
                 10px 0,
@@ -386,7 +295,6 @@
             );
 
             font-size: 11px;
-
             font-weight: 700;
 
             letter-spacing: 1.5px;
@@ -394,95 +302,78 @@
             text-transform: uppercase;
         }
 
-
         .status-dot {
-
             width: 7px;
-
             height: 7px;
 
             border-radius: 50%;
 
             background: var(--red);
 
-            box-shadow:
-                0 0 10px var(--red);
+            box-shadow: 0 0 10px var(--red);
 
             animation: pulse 1.5s infinite;
         }
 
-
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
                 transform: scale(1);
             }
 
             50% {
-                opacity: 0.4;
-                transform: scale(0.7);
+                opacity: .4;
+                transform: scale(.7);
             }
         }
 
-
         .gamepad {
-
             width: 52px;
-
             height: 52px;
 
             display: grid;
-
             place-items: center;
 
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,.18);
 
             border-radius: 14px;
 
-            background:
-                rgba(0,0,0,0.45);
+            background: rgba(0,0,0,.42);
 
             font-size: 21px;
         }
-
 
         /* =====================================================
            HERO
         ====================================================== */
 
         .hero {
+            position: relative;
 
-            min-height: 650px;
+            min-height: calc(100vh - 35px);
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             text-align: center;
 
-            position: relative;
+            padding-bottom: 95px;
         }
-
 
         .hero-content {
-
             max-width: 850px;
 
-            margin-top: -45px;
+            margin-top: -30px;
         }
 
-
         .welcome {
-
             display: inline-flex;
-
             align-items: center;
 
             gap: 12px;
+
+            margin-bottom: 25px;
 
             color: var(--red);
 
@@ -492,61 +383,46 @@
 
             letter-spacing: 5px;
 
-            margin-bottom: 25px;
-
             text-transform: uppercase;
         }
 
-
         .welcome::before,
         .welcome::after {
-
             content: "";
 
             width: 35px;
-
             height: 1px;
 
             background: var(--red);
 
-            box-shadow:
-                0 0 10px var(--red);
+            box-shadow: 0 0 10px var(--red);
         }
 
-
         .logo {
-
             font-family: "Orbitron", sans-serif;
 
             font-size: clamp(60px, 9vw, 115px);
 
             font-weight: 900;
-
             font-style: italic;
 
             letter-spacing: 5px;
 
-            line-height: 0.9;
+            line-height: .9;
 
             text-shadow:
-                0 0 35px rgba(255,255,255,0.08);
+                0 0 35px rgba(255,255,255,.08);
         }
 
-
         .logo span {
-
             color: var(--red);
 
             text-shadow:
-
-                0 0 15px rgba(255,0,30,0.8),
-
-                0 0 50px rgba(255,0,30,0.25);
+                0 0 15px rgba(255,0,30,.8),
+                0 0 50px rgba(255,0,30,.25);
         }
 
-
         .hero-tagline {
-
             margin-top: 28px;
 
             font-family: "Orbitron", sans-serif;
@@ -555,14 +431,12 @@
 
             letter-spacing: 6px;
 
-            color: rgba(255,255,255,0.9);
-
             text-transform: uppercase;
+
+            color: rgba(255,255,255,.9);
         }
 
-
         .hero-description {
-
             max-width: 620px;
 
             margin: 22px auto 0;
@@ -571,37 +445,13 @@
 
             line-height: 1.6;
 
-            color: rgba(255,255,255,0.62);
+            color: rgba(255,255,255,.62);
         }
-
-
-        .hero-line {
-
-            width: 100px;
-
-            height: 2px;
-
-            margin: 30px auto 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--red),
-                    transparent
-                );
-
-            box-shadow:
-                0 0 15px var(--red);
-        }
-
 
         .hero-tags {
-
-            margin-top: 25px;
+            margin-top: 24px;
 
             display: flex;
-
             justify-content: center;
 
             gap: 10px;
@@ -609,17 +459,14 @@
             flex-wrap: wrap;
         }
 
-
         .hero-tag {
-
             padding: 6px 12px;
 
-            border: 1px solid rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,.13);
 
-            background:
-                rgba(0,0,0,0.35);
+            background: rgba(0,0,0,.34);
 
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,.58);
 
             font-size: 11px;
 
@@ -628,45 +475,180 @@
             text-transform: uppercase;
         }
 
+        /* =====================================================
+           SCROLL INDICATOR
+        ====================================================== */
+
+        .scroll-indicator {
+            position: absolute;
+
+            left: 50%;
+            bottom: 22px;
+
+            transform: translateX(-50%);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 8px;
+
+            color: rgba(255,255,255,.65);
+
+            text-decoration: none;
+
+            z-index: 3;
+        }
+
+        .scroll-label {
+            font-size: 10px;
+
+            font-family: "Orbitron", sans-serif;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .scroll-circle {
+            width: 44px;
+            height: 44px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,32,53,.65);
+
+            background: rgba(0,0,0,.42);
+
+            color: white;
+
+            box-shadow:
+                0 0 18px rgba(255,32,53,.18);
+
+            animation: scrollBounce 1.8s ease-in-out infinite;
+        }
+
+        .scroll-chevron {
+            color: var(--red);
+
+            font-size: 13px;
+
+            animation: chevronPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes scrollBounce {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(7px);
+            }
+        }
+
+        @keyframes chevronPulse {
+
+            0%, 100% {
+                opacity: .3;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(4px);
+            }
+        }
 
         /* =====================================================
-           SECTION
+           HERO DIVIDER
+        ====================================================== */
+
+        .hero-divider {
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,32,53,.15),
+                    var(--red),
+                    rgba(255,32,53,.15),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 14px rgba(255,32,53,.45);
+        }
+
+        .hero-divider::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            top: -6px;
+
+            width: 14px;
+            height: 14px;
+
+            transform:
+                translateX(-50%)
+                rotate(45deg);
+
+            background: #020405;
+
+            border-right: 1px solid var(--red);
+            border-bottom: 1px solid var(--red);
+        }
+
+        /* =====================================================
+           SECTIONS
         ====================================================== */
 
         .section {
+            position: relative;
 
-            padding: 90px 0;
+            padding: 82px 0;
         }
 
+        .social-section {
+            margin-top: -1px;
+
+            padding-top: 65px;
+        }
 
         .section-heading {
-
             text-align: center;
 
             margin-bottom: 45px;
         }
 
-
         .section-kicker {
+            margin-bottom: 13px;
 
             color: var(--red);
 
             font-family: "Orbitron", sans-serif;
 
             font-size: 10px;
-
             font-weight: 700;
 
             letter-spacing: 4px;
 
             text-transform: uppercase;
-
-            margin-bottom: 13px;
         }
 
-
         .section-title {
-
             font-family: "Orbitron", sans-serif;
 
             font-size: clamp(26px, 4vw, 40px);
@@ -674,14 +656,11 @@
             letter-spacing: 2px;
         }
 
-
         .section-title span {
             color: var(--red);
         }
 
-
         .section-description {
-
             max-width: 650px;
 
             margin: 14px auto 0;
@@ -693,13 +672,11 @@
             line-height: 1.55;
         }
 
-
         /* =====================================================
            SOCIAL GRID
         ====================================================== */
 
         .social-grid {
-
             display: grid;
 
             grid-template-columns:
@@ -708,16 +685,9 @@
             gap: 18px;
         }
 
-
-        /* =====================================================
-           SOCIAL CARD
-        ====================================================== */
-
         .social-card {
-
             --accent: white;
-
-            --glow: rgba(255,255,255,0.15);
+            --glow: rgba(255,255,255,.15);
 
             position: relative;
 
@@ -726,28 +696,25 @@
             padding: 32px 22px;
 
             display: flex;
-
             flex-direction: column;
 
             align-items: center;
-
             justify-content: space-between;
 
             text-align: center;
 
-            color: white;
-
             text-decoration: none;
 
-            background:
+            color: white;
 
+            background:
                 linear-gradient(
                     145deg,
-                    rgba(18,22,28,0.94),
-                    rgba(2,4,6,0.97)
+                    rgba(18,22,28,.94),
+                    rgba(2,4,6,.97)
                 );
 
-            border: 1px solid rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,.14);
 
             clip-path: polygon(
                 0 18px,
@@ -763,25 +730,18 @@
             overflow: hidden;
 
             transition:
-
                 transform .4s cubic-bezier(.2,.8,.2,1),
-
                 border-color .4s ease,
-
                 box-shadow .4s ease;
         }
 
-
         .social-card::before {
-
             content: "";
 
             position: absolute;
 
             left: 20px;
-
             right: 20px;
-
             top: 0;
 
             height: 1px;
@@ -797,21 +757,15 @@
             opacity: .7;
         }
 
-
-        /* Hover light sweep */
-
         .social-card::after {
-
             content: "";
 
             position: absolute;
 
             width: 80px;
-
             height: 150%;
 
             left: -130px;
-
             top: -25%;
 
             transform: rotate(20deg);
@@ -820,22 +774,18 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(255,255,255,0.08),
+                    rgba(255,255,255,.08),
                     transparent
                 );
 
-            transition:
-                left .7s ease;
+            transition: left .7s ease;
         }
-
 
         .social-card:hover::after {
             left: 130%;
         }
 
-
         .social-card:hover {
-
             transform:
                 translateY(-14px)
                 scale(1.015);
@@ -843,80 +793,57 @@
             border-color: var(--accent);
 
             box-shadow:
-
-                0 25px 60px rgba(0,0,0,0.65),
-
+                0 25px 60px rgba(0,0,0,.65),
                 0 0 35px var(--glow);
         }
 
-
-        /* =====================================================
-           SOCIAL ICON
-        ====================================================== */
-
         .social-icon {
-
             width: 105px;
-
             height: 105px;
 
             display: grid;
-
             place-items: center;
 
             border-radius: 20px;
 
-            background:
-                rgba(5,8,12,0.95);
+            background: rgba(5,8,12,.95);
 
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,.12);
 
             color: var(--accent);
 
             font-size: 46px;
 
             box-shadow:
-
-                inset 0 0 30px rgba(255,255,255,0.025),
-
+                inset 0 0 30px rgba(255,255,255,.025),
                 0 0 25px var(--glow);
 
             transition:
-
                 transform .4s ease,
-
                 box-shadow .4s ease;
         }
 
-
         .social-card:hover .social-icon {
-
             transform:
                 scale(1.08)
                 rotate(-2deg);
 
             box-shadow:
-
-                inset 0 0 30px rgba(255,255,255,0.04),
-
+                inset 0 0 30px rgba(255,255,255,.04),
                 0 0 45px var(--glow);
         }
 
-
         .social-name {
+            margin-bottom: 10px;
 
             font-family: "Orbitron", sans-serif;
 
             font-size: 15px;
 
             letter-spacing: 1px;
-
-            margin-bottom: 10px;
         }
 
-
         .social-text {
-
             max-width: 175px;
 
             color: var(--muted);
@@ -926,27 +853,21 @@
             line-height: 1.45;
         }
 
-
         .social-button {
-
             width: 125px;
-
             height: 38px;
 
             display: grid;
-
             place-items: center;
 
             border: 1px solid var(--accent);
 
             font-size: 13px;
-
             font-weight: 700;
 
             letter-spacing: 1.5px;
 
-            background:
-                rgba(0,0,0,0.3);
+            background: rgba(0,0,0,.3);
 
             clip-path: polygon(
                 9px 0,
@@ -960,79 +881,118 @@
             transition: .3s ease;
         }
 
-
         .social-card:hover .social-button {
-
             color: #000;
 
             background: var(--accent);
 
-            box-shadow:
-                0 0 25px var(--glow);
+            box-shadow: 0 0 25px var(--glow);
         }
-
-
-        /* Platform colors */
 
         .facebook {
-
             --accent: #1877f2;
-
-            --glow: rgba(24,119,242,0.35);
+            --glow: rgba(24,119,242,.35);
         }
-
 
         .instagram {
-
             --accent: #ff3cac;
-
-            --glow: rgba(255,60,172,0.35);
+            --glow: rgba(255,60,172,.35);
         }
-
 
         .youtube {
-
             --accent: #ff2035;
-
-            --glow: rgba(255,32,53,0.35);
+            --glow: rgba(255,32,53,.35);
         }
-
 
         .x {
-
             --accent: #ffffff;
-
-            --glow: rgba(255,255,255,0.18);
+            --glow: rgba(255,255,255,.18);
         }
-
 
         .threads {
-
             --accent: #c45cff;
-
-            --glow: rgba(196,92,255,0.35);
+            --glow: rgba(196,92,255,.35);
         }
 
+        /* =====================================================
+           SECTION TRANSITION
+        ====================================================== */
+
+        .section-transition {
+            position: relative;
+
+            height: 86px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-transition::before {
+            content: "";
+
+            position: absolute;
+
+            left: 5%;
+            right: 5%;
+            top: 50%;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(196,92,255,.16),
+                    rgba(196,92,255,.4),
+                    rgba(196,92,255,.16),
+                    transparent
+                );
+        }
+
+        .transition-mark {
+            position: relative;
+
+            z-index: 2;
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background: #020405;
+
+            color: var(--purple);
+
+            border-top: 1px solid rgba(196,92,255,.55);
+            border-bottom: 1px solid rgba(196,92,255,.55);
+        }
+
+        .transition-mark i {
+            font-size: 12px;
+            line-height: 9px;
+        }
 
         /* =====================================================
            JUMPY SECTION
         ====================================================== */
 
         .game-section {
-
             position: relative;
 
             padding: 70px;
 
             background:
-
                 linear-gradient(
                     125deg,
-                    rgba(10,9,18,0.98),
-                    rgba(3,5,8,0.98)
+                    rgba(10,9,18,.98),
+                    rgba(3,5,8,.98)
                 );
 
-            border: 1px solid rgba(196,92,255,0.28);
+            border: 1px solid rgba(196,92,255,.28);
 
             clip-path: polygon(
                 0 25px,
@@ -1048,63 +1008,28 @@
             overflow: hidden;
         }
 
-
         .game-section::before {
-
             content: "";
 
             position: absolute;
-
             inset: 0;
 
             background:
-
                 radial-gradient(
                     circle at 78% 50%,
-                    rgba(196,92,255,0.12),
+                    rgba(196,92,255,.12),
                     transparent 35%
                 ),
-
                 radial-gradient(
                     circle at 10% 50%,
-                    rgba(255,30,50,0.06),
+                    rgba(255,30,50,.06),
                     transparent 35%
                 );
 
             pointer-events: none;
         }
 
-
-        .game-section::after {
-
-            content: "";
-
-            position: absolute;
-
-            width: 400px;
-
-            height: 400px;
-
-            right: -200px;
-
-            top: -200px;
-
-            border-radius: 50%;
-
-            border: 1px solid rgba(196,92,255,0.08);
-
-            box-shadow:
-
-                0 0 0 50px rgba(196,92,255,0.015),
-
-                0 0 0 100px rgba(196,92,255,0.01);
-
-            pointer-events: none;
-        }
-
-
         .game-header {
-
             position: relative;
 
             text-align: center;
@@ -1112,27 +1037,22 @@
             margin-bottom: 55px;
         }
 
-
         .game-kicker {
-
-            font-family: "Orbitron", sans-serif;
+            margin-bottom: 14px;
 
             color: var(--purple);
 
+            font-family: "Orbitron", sans-serif;
+
             font-size: 10px;
+            font-weight: 700;
 
             letter-spacing: 4px;
 
-            font-weight: 700;
-
             text-transform: uppercase;
-
-            margin-bottom: 14px;
         }
 
-
         .game-title {
-
             font-family: "Orbitron", sans-serif;
 
             font-size: clamp(28px, 4vw, 43px);
@@ -1140,14 +1060,11 @@
             letter-spacing: 2px;
         }
 
-
         .game-title span {
             color: var(--purple);
         }
 
-
         .game-subtitle {
-
             margin-top: 12px;
 
             color: var(--muted);
@@ -1155,92 +1072,67 @@
             font-size: 17px;
         }
 
-
-        /* =====================================================
-           GAME CONTENT
-        ====================================================== */
-
         .game-content {
-
             position: relative;
 
             display: grid;
 
             grid-template-columns:
-                0.9fr 1.4fr;
+                .9fr 1.4fr;
 
             gap: 65px;
 
             align-items: center;
         }
 
-
-        /* =====================================================
-           GAME INFO
-        ====================================================== */
-
         .game-info {
-
             display: flex;
-
             flex-direction: column;
 
             align-items: flex-start;
         }
 
-
         .game-icon {
-
             width: 145px;
-
             height: 145px;
 
-            border-radius: 28px;
+            margin-bottom: 25px;
 
             object-fit: cover;
 
+            border-radius: 28px;
+
+            border: 2px solid rgba(196,92,255,.45);
+
             background: #000;
 
-            border: 2px solid rgba(196,92,255,0.45);
-
             box-shadow:
-
-                0 0 35px rgba(196,92,255,0.20),
-
-                0 20px 50px rgba(0,0,0,0.5);
-
-            margin-bottom: 25px;
+                0 0 35px rgba(196,92,255,.2),
+                0 20px 50px rgba(0,0,0,.5);
         }
 
-
         .game-name {
+            margin-bottom: 6px;
 
             font-family: "Orbitron", sans-serif;
 
             font-size: 31px;
 
             letter-spacing: 2px;
-
-            margin-bottom: 6px;
         }
 
-
         .game-developer {
+            margin-bottom: 18px;
 
             color: var(--purple);
 
             font-weight: 700;
 
             letter-spacing: 1px;
-
-            margin-bottom: 18px;
         }
 
-
         .game-badge {
-
             display: inline-flex;
-
             align-items: center;
 
             gap: 8px;
@@ -1249,15 +1141,13 @@
 
             padding: 7px 12px;
 
-            border: 1px solid rgba(196,92,255,0.25);
+            border: 1px solid rgba(196,92,255,.25);
 
-            background:
-                rgba(196,92,255,0.06);
+            background: rgba(196,92,255,.06);
 
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,.65);
 
             font-size: 10px;
-
             font-weight: 700;
 
             letter-spacing: 1.5px;
@@ -1265,32 +1155,23 @@
             text-transform: uppercase;
         }
 
-
         .game-badge i {
             color: var(--purple);
         }
 
-
         .game-description {
+            max-width: 480px;
 
-            color: rgba(255,255,255,0.65);
+            margin-bottom: 25px;
+
+            color: rgba(255,255,255,.65);
 
             font-size: 17px;
 
             line-height: 1.65;
-
-            max-width: 480px;
-
-            margin-bottom: 25px;
         }
 
-
-        /* =====================================================
-           FEATURES
-        ====================================================== */
-
         .features {
-
             display: grid;
 
             grid-template-columns:
@@ -1301,37 +1182,29 @@
             margin-bottom: 30px;
         }
 
-
         .feature {
-
             display: flex;
-
             align-items: center;
 
             gap: 9px;
 
-            color: rgba(255,255,255,0.72);
+            color: rgba(255,255,255,.72);
 
             font-size: 14px;
         }
 
-
         .feature i {
-
             color: var(--purple);
 
             font-size: 11px;
         }
 
-
         /* =====================================================
-           GOOGLE PLAY BUTTON
+           GOOGLE PLAY
         ====================================================== */
 
         .play-store-button {
-
             display: inline-flex;
-
             align-items: center;
 
             gap: 13px;
@@ -1342,76 +1215,61 @@
 
             text-decoration: none;
 
-            border: 1px solid rgba(255,255,255,0.25);
-
-            background: #050608;
+            border: 1px solid rgba(255,255,255,.25);
 
             border-radius: 9px;
 
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.4);
+            background: #050608;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,.4);
 
             transition: .3s ease;
         }
 
-
         .play-store-button i {
+            color: #4caf50;
 
             font-size: 25px;
-
-            color: #4caf50;
         }
 
-
         .play-store-button small {
-
             display: block;
+
+            color: rgba(255,255,255,.7);
 
             font-size: 9px;
 
             letter-spacing: 1px;
-
-            color: rgba(255,255,255,0.7);
         }
 
-
         .play-store-button strong {
-
             display: block;
+
+            font-family: "Rajdhani", sans-serif;
 
             font-size: 19px;
 
             line-height: 1;
-
-            font-family: "Rajdhani", sans-serif;
         }
 
-
         .play-store-button:hover {
-
             transform: translateY(-4px);
 
             border-color: var(--purple);
 
             box-shadow:
-                0 12px 35px rgba(196,92,255,0.18);
+                0 12px 35px rgba(196,92,255,.18);
         }
-
 
         /* =====================================================
            SCREENSHOTS
         ====================================================== */
 
         .screenshots {
-
-            position: relative;
-
             min-width: 0;
         }
 
-
         .screenshots-main {
-
             display: flex;
 
             gap: 18px;
@@ -1424,12 +1282,10 @@
 
             scrollbar-color:
                 var(--purple)
-                rgba(255,255,255,0.08);
+                rgba(255,255,255,.08);
         }
 
-
         .screenshot {
-
             flex: 0 0 225px;
 
             height: 400px;
@@ -1438,25 +1294,19 @@
 
             border-radius: 20px;
 
-            border: 1px solid rgba(196,92,255,0.30);
+            border: 1px solid rgba(196,92,255,.30);
 
             background: #050608;
 
-            box-shadow:
-                0 20px 45px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 45px rgba(0,0,0,.5);
 
             transition:
-
                 transform .35s ease,
-
                 border-color .35s ease,
-
                 box-shadow .35s ease;
         }
 
-
         .screenshot:hover {
-
             transform:
                 translateY(-10px)
                 scale(1.025);
@@ -1464,59 +1314,49 @@
             border-color: var(--purple);
 
             box-shadow:
-                0 25px 50px rgba(196,92,255,0.18);
+                0 25px 50px rgba(196,92,255,.18);
         }
 
-
         .screenshot-hint {
-
             margin-top: 5px;
 
             text-align: center;
 
-            color: rgba(255,255,255,0.32);
+            color: rgba(255,255,255,.35);
 
             font-size: 11px;
 
             letter-spacing: 1.5px;
-        }
 
+            text-transform: uppercase;
+        }
 
         /* =====================================================
            FOOTER
         ====================================================== */
 
         footer {
-
-            padding: 80px 0 40px;
+            padding: 82px 0 42px;
 
             text-align: center;
         }
 
-
         .footer-logo {
+            margin-bottom: 25px;
 
             font-family: "Orbitron", sans-serif;
 
             font-size: 30px;
-
             font-weight: 900;
-
             font-style: italic;
-
-            margin-bottom: 25px;
         }
-
 
         .footer-logo span {
             color: var(--red);
         }
 
-
         .footer-socials {
-
             display: flex;
-
             justify-content: center;
 
             gap: 12px;
@@ -1524,20 +1364,16 @@
             margin-bottom: 30px;
         }
 
-
         .footer-socials a {
-
             width: 42px;
-
             height: 42px;
 
             display: grid;
-
             place-items: center;
 
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,.65);
 
-            border: 1px solid rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,.13);
 
             border-radius: 10px;
 
@@ -1546,23 +1382,19 @@
             transition: .3s ease;
         }
 
-
         .footer-socials a:hover {
-
             color: white;
 
             border-color: var(--red);
 
             box-shadow:
-                0 0 20px rgba(255,0,30,0.18);
+                0 0 20px rgba(255,0,30,.18);
 
             transform: translateY(-4px);
         }
 
-
         .footer-message {
-
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,.55);
 
             font-size: 16px;
 
@@ -1571,11 +1403,8 @@
             line-height: 1.7;
         }
 
-
         .footer-line {
-
             width: 100px;
-
             height: 2px;
 
             margin: 17px auto 0;
@@ -1588,10 +1417,8 @@
                     transparent
                 );
 
-            box-shadow:
-                0 0 12px var(--red);
+            box-shadow: 0 0 12px var(--red);
         }
-
 
         /* =====================================================
            ACCESSIBILITY
@@ -1599,13 +1426,11 @@
 
         .social-card:focus-visible,
         .play-store-button:focus-visible,
-        .footer-socials a:focus-visible {
-
+        .footer-socials a:focus-visible,
+        .scroll-indicator:focus-visible {
             outline: 2px solid white;
-
             outline-offset: 5px;
         }
-
 
         /* =====================================================
            TABLET
@@ -1614,35 +1439,26 @@
         @media (max-width: 1150px) {
 
             .social-grid {
-
                 grid-template-columns:
                     repeat(3, 1fr);
             }
 
-
             .game-content {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
                 gap: 45px;
             }
 
-
             .game-info {
-
                 align-items: center;
 
                 text-align: center;
             }
 
-
             .game-description {
-
                 max-width: 650px;
             }
         }
-
 
         /* =====================================================
            MOBILE
@@ -1651,70 +1467,56 @@
         @media (max-width: 750px) {
 
             .container {
-
                 width: 90%;
             }
 
-
             header {
-
                 height: 75px;
             }
 
-
             .brand {
-
                 font-size: 20px;
             }
 
-
             .header-status {
-
                 display: none;
             }
 
-
             .gamepad {
-
                 width: 45px;
-
                 height: 45px;
 
                 font-size: 18px;
             }
 
-
             .hero {
+                min-height: calc(100vh - 15px);
 
-                min-height: 530px;
+                padding-bottom: 100px;
             }
 
+            .hero-content {
+                margin-top: -10px;
+            }
 
             .welcome {
-
                 font-size: 9px;
 
                 letter-spacing: 3px;
             }
 
-
             .welcome::before,
             .welcome::after {
-
                 width: 20px;
             }
 
-
             .logo {
-
                 font-size: 55px;
 
                 letter-spacing: 3px;
             }
 
-
             .hero-tagline {
-
                 font-size: 10px;
 
                 letter-spacing: 3px;
@@ -1722,32 +1524,32 @@
                 line-height: 1.5;
             }
 
-
             .hero-description {
-
                 font-size: 16px;
             }
 
-
-            .section {
-
-                padding: 60px 0;
+            .scroll-label {
+                font-size: 9px;
             }
 
+            .scroll-circle {
+                width: 42px;
+                height: 42px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
 
             /* SOCIAL */
 
             .social-grid {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
                 gap: 14px;
             }
 
-
             .social-card {
-
                 min-height: 220px;
 
                 display: grid;
@@ -1768,45 +1570,34 @@
                 border-radius: 14px;
             }
 
-
             .social-icon {
-
                 width: 70px;
-
                 height: 70px;
 
-                font-size: 30px;
-
                 border-radius: 14px;
+
+                font-size: 30px;
             }
 
-
             .social-text {
-
                 max-width: none;
 
                 font-size: 13px;
             }
 
-
             .social-name {
-
                 font-size: 13px;
             }
 
-
             .social-button {
-
                 width: 100px;
 
                 font-size: 11px;
             }
 
-
-            /* JUMPY */
+            /* GAME */
 
             .game-section {
-
                 padding: 40px 20px;
 
                 clip-path: none;
@@ -1814,44 +1605,31 @@
                 border-radius: 15px;
             }
 
-
             .game-icon {
-
                 width: 120px;
-
                 height: 120px;
             }
 
-
             .game-name {
-
                 font-size: 26px;
             }
 
-
             .game-description {
-
                 font-size: 15px;
             }
 
-
             .features {
-
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
                 text-align: left;
             }
 
-
             .screenshot {
-
                 flex-basis: 180px;
 
                 height: 320px;
             }
         }
-
 
         /* =====================================================
            SMALL MOBILE
@@ -1860,47 +1638,54 @@
         @media (max-width: 480px) {
 
             .logo {
-
                 font-size: 47px;
             }
 
+            .hero-tags {
+                gap: 6px;
+            }
+
+            .hero-tag {
+                padding: 5px 8px;
+
+                font-size: 9px;
+            }
 
             .social-card {
-
                 grid-template-columns:
                     60px 1fr;
             }
 
-
             .social-icon {
-
                 width: 60px;
-
                 height: 60px;
 
                 font-size: 25px;
             }
 
-
             .social-button {
-
                 grid-column: 2;
 
                 width: 105px;
             }
+        }
 
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
 
-            .hero-tags {
+        @media (prefers-reduced-motion: reduce) {
 
-                gap: 6px;
+            html {
+                scroll-behavior: auto;
             }
 
-
-            .hero-tag {
-
-                font-size: 9px;
-
-                padding: 5px 8px;
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
             }
         }
 
@@ -1910,7 +1695,6 @@
 
 
 <body>
-
 
     <!-- =====================================================
          BACKGROUND
@@ -1929,8 +1713,6 @@
     </div>
 
 
-    <!-- Floating particles -->
-
     <span class="particle"></span>
     <span class="particle"></span>
     <span class="particle"></span>
@@ -1938,11 +1720,6 @@
     <span class="particle"></span>
     <span class="particle"></span>
 
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
 
     <main>
 
@@ -1956,9 +1733,7 @@
             <header>
 
                 <div class="brand">
-
                     GT<span>26</span>RS
-
                 </div>
 
 
@@ -1997,26 +1772,22 @@
 
         <section class="hero">
 
+
             <div class="hero-content">
 
+
                 <div class="welcome">
-
                     WELCOME TO
-
                 </div>
 
 
                 <h1 class="logo">
-
                     GT<span>26</span>RS
-
                 </h1>
 
 
                 <p class="hero-tagline">
-
                     LEVEL UP. STAY CONNECTED.
-
                 </p>
 
 
@@ -2044,20 +1815,48 @@
 
                 </div>
 
-
-                <div class="hero-line"></div>
-
             </div>
+
+
+            <!-- Scroll hint -->
+
+            <a
+                href="#social"
+                class="scroll-indicator"
+                aria-label="Scroll to gaming channels"
+            >
+
+                <span class="scroll-label">
+                    SCROLL DOWN
+                </span>
+
+
+                <span class="scroll-circle">
+
+                    <i class="fa-solid fa-arrow-down"></i>
+
+                </span>
+
+
+                <i class="fa-solid fa-chevron-down scroll-chevron"></i>
+
+            </a>
+
+
+            <div class="hero-divider"></div>
 
         </section>
 
 
 
         <!-- =================================================
-             SOCIAL SECTION
+             SOCIAL
         ================================================== -->
 
-        <section class="section">
+        <section
+            class="section social-section"
+            id="social"
+        >
 
             <div class="container">
 
@@ -2065,16 +1864,12 @@
                 <div class="section-heading">
 
                     <div class="section-kicker">
-
                         WATCH THE ACTION
-
                     </div>
 
 
                     <h2 class="section-title">
-
                         CONNECT <span>WITH ME</span>
-
                     </h2>
 
 
@@ -2090,10 +1885,6 @@
 
 
 
-                <!-- =========================================
-                     SOCIAL CARDS
-                ========================================== -->
-
                 <div class="social-grid">
 
 
@@ -2104,7 +1895,6 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="social-card facebook"
-                        aria-label="GT26RS Facebook"
                     >
 
                         <div class="social-icon">
@@ -2117,11 +1907,8 @@
                         <div>
 
                             <h3 class="social-name">
-
                                 FACEBOOK
-
                             </h3>
-
 
                             <p class="social-text">
 
@@ -2134,9 +1921,7 @@
 
 
                         <div class="social-button">
-
                             CONNECT
-
                         </div>
 
                     </a>
@@ -2150,7 +1935,6 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="social-card instagram"
-                        aria-label="GT26RS Instagram"
                     >
 
                         <div class="social-icon">
@@ -2163,11 +1947,8 @@
                         <div>
 
                             <h3 class="social-name">
-
                                 INSTAGRAM
-
                             </h3>
-
 
                             <p class="social-text">
 
@@ -2180,9 +1961,7 @@
 
 
                         <div class="social-button">
-
                             FOLLOW
-
                         </div>
 
                     </a>
@@ -2196,7 +1975,6 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="social-card youtube"
-                        aria-label="GT26RS YouTube"
                     >
 
                         <div class="social-icon">
@@ -2209,11 +1987,8 @@
                         <div>
 
                             <h3 class="social-name">
-
                                 YOUTUBE
-
                             </h3>
-
 
                             <p class="social-text">
 
@@ -2226,9 +2001,7 @@
 
 
                         <div class="social-button">
-
                             SUBSCRIBE
-
                         </div>
 
                     </a>
@@ -2242,7 +2015,6 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="social-card x"
-                        aria-label="GT26RS X"
                     >
 
                         <div class="social-icon">
@@ -2255,11 +2027,8 @@
                         <div>
 
                             <h3 class="social-name">
-
                                 X / TWITTER
-
                             </h3>
-
 
                             <p class="social-text">
 
@@ -2272,9 +2041,7 @@
 
 
                         <div class="social-button">
-
                             FOLLOW
-
                         </div>
 
                     </a>
@@ -2288,7 +2055,6 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         class="social-card threads"
-                        aria-label="GT26RS Threads"
                     >
 
                         <div class="social-icon">
@@ -2301,11 +2067,8 @@
                         <div>
 
                             <h3 class="social-name">
-
                                 THREADS
-
                             </h3>
-
 
                             <p class="social-text">
 
@@ -2318,9 +2081,7 @@
 
 
                         <div class="social-button">
-
                             CONNECT
-
                         </div>
 
                     </a>
@@ -2331,6 +2092,23 @@
             </div>
 
         </section>
+
+
+
+        <!-- =================================================
+             SECTION TRANSITION
+        ================================================== -->
+
+        <div class="section-transition">
+
+            <div class="transition-mark">
+
+                <i class="fa-solid fa-chevron-down"></i>
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+        </div>
 
 
 
@@ -2346,20 +2124,17 @@
                 <div class="game-section">
 
 
-                    <!-- GAME HEADER -->
-
                     <div class="game-header">
 
                         <div class="game-kicker">
-
                             BUILT BY GT26RS
-
                         </div>
 
 
                         <h2 class="game-title">
 
-                            MY GAME ON <span>PLAY STORE</span>
+                            MY GAME ON
+                            <span>PLAY STORE</span>
 
                         </h2>
 
@@ -2375,19 +2150,13 @@
 
 
 
-                    <!-- GAME CONTENT -->
-
                     <div class="game-content">
 
 
-                        <!-- =================================
-                             GAME INFO
-                        ================================== -->
+                        <!-- GAME INFO -->
 
                         <div class="game-info">
 
-
-                            <!-- Actual Jumpy icon -->
 
                             <img
                                 class="game-icon"
@@ -2397,16 +2166,12 @@
 
 
                             <h3 class="game-name">
-
                                 JUMPY
-
                             </h3>
 
 
                             <div class="game-developer">
-
                                 GT26RS
-
                             </div>
 
 
@@ -2432,8 +2197,6 @@
                             </p>
 
 
-
-                            <!-- FEATURES -->
 
                             <div class="features">
 
@@ -2496,30 +2259,24 @@
 
 
 
-                            <!-- GOOGLE PLAY -->
-
                             <a
                                 href="https://play.google.com/store/apps/details?id=com.roshansourav.jumpy"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="play-store-button"
-                                aria-label="Play Jumpy on Google Play"
                             >
 
                                 <i class="fa-brands fa-google-play"></i>
 
+
                                 <span>
 
                                     <small>
-
                                         GET IT ON
-
                                     </small>
 
                                     <strong>
-
                                         Google Play
-
                                     </strong>
 
                                 </span>
@@ -2530,9 +2287,7 @@
 
 
 
-                        <!-- =================================
-                             SCREENSHOTS
-                        ================================== -->
+                        <!-- SCREENSHOTS -->
 
                         <div class="screenshots">
 
@@ -2540,40 +2295,38 @@
                             <div class="screenshots-main">
 
 
-                                <!-- Actual Play Store screenshots -->
-
                                 <img
                                     class="screenshot"
                                     src="https://play-lh.googleusercontent.com/Fz7yQfPZ2xrsYgr4MU4mRSAxUyieJ0CNuoPt9JtwOcX8yXRzNqX2FzvdFQcCshr0sUidFFdvkCQdf8a6ybJleks=w526-h296"
-                                    alt="Jumpy main menu"
+                                    alt="Jumpy screenshot"
                                 >
 
 
                                 <img
                                     class="screenshot"
                                     src="https://play-lh.googleusercontent.com/M4Nnw9Er24F2FEylUjjPclBwzZ64Lpa8MLd3l6_X5NnyibguoQX0AJ-oPOK_50wWnSusDpUHGVmnbXnOYG0hCQ=w526-h296"
-                                    alt="Jumpy loading screen"
+                                    alt="Jumpy screenshot"
                                 >
 
 
                                 <img
                                     class="screenshot"
                                     src="https://play-lh.googleusercontent.com/wwQCOMbp7T3UViWOQhAHV8fy4A5f0oQam5tAqJquO7oiEtrIYKhUPZsOZAdznBfs5peJw1qW-ueZDWaU2wzD=w526-h296"
-                                    alt="Jumpy gameplay"
+                                    alt="Jumpy gameplay screenshot"
                                 >
 
 
                                 <img
                                     class="screenshot"
                                     src="https://play-lh.googleusercontent.com/YRmQQRMkbeS-4FBpdBN01Hb4LmFxvDHRnS8MdqV1nt5mJUMZv9em-LPcMaPrT2KVL_n3VvTMXKl2tYhHeqIU=w526-h296"
-                                    alt="Jumpy profiles"
+                                    alt="Jumpy profile screenshot"
                                 >
 
 
                                 <img
                                     class="screenshot"
                                     src="https://play-lh.googleusercontent.com/Zcbo5RWhwkZqXOdVco8OgfuXGUHxAAgRdxowJbU1v-tALV4qGujZzoX8hvUfTfD0YvIo6glOJBNaJL-0t68YD4E=w526-h296"
-                                    alt="Jumpy new user screen"
+                                    alt="Jumpy screenshot"
                                 >
 
                             </div>
@@ -2675,7 +2428,6 @@
 
                     </a>
 
-
                 </div>
 
 
@@ -2696,6 +2448,7 @@
             </div>
 
         </footer>
+
 
     </main>
 
