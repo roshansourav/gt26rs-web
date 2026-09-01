@@ -5,27 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>GT26RS | Gaming Community</title>
+    <title>GT26RS | Gaming • Racing • Development</title>
 
-    <!-- Fonts -->
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
-    <!-- Font Awesome -->
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
+
     <style>
 
-        /* ========================================
+        /* =====================================================
            RESET
-        ======================================== */
+        ====================================================== */
 
         * {
             margin: 0;
@@ -33,63 +41,49 @@
             box-sizing: border-box;
         }
 
-
-        /* ========================================
-           VARIABLES
-        ======================================== */
-
-        :root {
-
-            --red: #ff2035;
-            --red-dark: #8b0010;
-
-            --bg: #020405;
-
-            --text: #ffffff;
-            --muted: rgba(255,255,255,0.55);
-
-            --facebook: #1877f2;
-            --instagram: #ff3cac;
-            --youtube: #ff2035;
-            --x: #ffffff;
-            --threads: #c45cff;
+        html {
+            scroll-behavior: smooth;
         }
 
-
-        /* ========================================
-           BODY
-        ======================================== */
-
         body {
-
             min-height: 100vh;
 
-            color: var(--text);
+            background: #020405;
+
+            color: #ffffff;
 
             font-family: "Rajdhani", sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at 50% 35%,
-                    rgba(255, 20, 40, 0.10),
-                    transparent 30%
-                ),
-
-                radial-gradient(
-                    circle at 15% 90%,
-                    rgba(255, 0, 30, 0.08),
-                    transparent 35%
-                ),
-
-                #020405;
 
             overflow-x: hidden;
         }
 
 
-        /* ========================================
-           CINEMATIC BACKGROUND
-        ======================================== */
+        /* =====================================================
+           VARIABLES
+        ====================================================== */
+
+        :root {
+
+            --red: #ff2035;
+            --red-soft: #ff4352;
+
+            --blue: #1877f2;
+            --pink: #ff3cac;
+            --purple: #c45cff;
+
+            --white: #ffffff;
+
+            --bg: #020405;
+
+            --card: rgba(8, 11, 15, 0.90);
+
+            --muted: rgba(255,255,255,0.58);
+        }
+
+
+        /* =====================================================
+           BACKGROUND
+        ====================================================== */
 
         .background {
 
@@ -97,69 +91,100 @@
 
             inset: 0;
 
-            z-index: 0;
-
-            pointer-events: none;
+            z-index: -10;
 
             overflow: hidden;
+
+            background: #020405;
         }
 
 
-        /* Dark cinematic vignette */
+        .background-image {
 
-        .background::before {
+            position: absolute;
 
-            content: "";
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.92) 0%,
+                    rgba(0,0,0,0.72) 38%,
+                    rgba(0,0,0,0.82) 100%
+                ),
+
+                linear-gradient(
+                    0deg,
+                    #020405 0%,
+                    transparent 65%,
+                    rgba(0,0,0,0.35) 100%
+                ),
+
+                url("https://images.unsplash.com/photo-1628519592419-bf288f08cef5?auto=format&fit=crop&fm=jpg&q=85&w=2400");
+
+            background-size: cover;
+
+            background-position: center;
+
+            filter: saturate(0.75);
+
+            transform: scale(1.04);
+        }
+
+
+        .background-overlay {
 
             position: absolute;
 
             inset: 0;
 
             background:
+
                 radial-gradient(
-                    ellipse at center,
-                    transparent 20%,
-                    rgba(0,0,0,0.75) 85%
+                    circle at center,
+                    transparent 15%,
+                    rgba(0,0,0,0.4) 55%,
+                    rgba(0,0,0,0.92) 100%
                 );
         }
 
-
-        /* Red glow */
 
         .red-glow {
 
             position: absolute;
 
-            width: 700px;
-            height: 700px;
+            width: 900px;
+
+            height: 900px;
 
             left: 50%;
-            top: 50%;
+
+            top: 35%;
 
             transform: translate(-50%, -50%);
 
             background:
+
                 radial-gradient(
                     circle,
-                    rgba(255,0,30,0.08),
-                    transparent 65%
+                    rgba(255,0,30,0.12),
+                    transparent 68%
                 );
 
-            filter: blur(30px);
+            filter: blur(40px);
         }
 
 
-        /* ========================================
-           GRID
-        ======================================== */
+        /* =====================================================
+           TECH GRID
+        ====================================================== */
 
-        .grid {
+        .tech-grid {
 
             position: absolute;
 
             inset: 0;
-
-            opacity: 0.18;
 
             background-image:
 
@@ -176,78 +201,82 @@
 
             background-size: 55px 55px;
 
+            opacity: 0.18;
+
             mask-image:
                 linear-gradient(
                     to bottom,
                     black,
-                    transparent 85%
+                    transparent 75%
                 );
         }
 
 
-        /* ========================================
+        /* =====================================================
            PARTICLES
-        ======================================== */
+        ====================================================== */
 
         .particle {
 
-            position: absolute;
+            position: fixed;
 
             width: 2px;
+
             height: 2px;
 
             background: var(--red);
 
             box-shadow:
-                0 0 8px var(--red);
+                0 0 10px var(--red);
 
-            opacity: 0.5;
+            opacity: 0;
 
             animation: particleMove 8s linear infinite;
+
+            z-index: -2;
         }
 
 
         .particle:nth-child(1) {
-            left: 10%;
-            top: 80%;
-            animation-delay: 1s;
+            left: 8%;
+            bottom: -10px;
+            animation-delay: 0s;
         }
 
         .particle:nth-child(2) {
-            left: 22%;
-            top: 95%;
-            animation-delay: 3s;
-        }
-
-        .particle:nth-child(3) {
-            left: 38%;
-            top: 75%;
-            animation-delay: 5s;
-        }
-
-        .particle:nth-child(4) {
-            left: 60%;
-            top: 90%;
+            left: 20%;
+            bottom: -10px;
             animation-delay: 2s;
         }
 
-        .particle:nth-child(5) {
-            left: 75%;
-            top: 80%;
+        .particle:nth-child(3) {
+            left: 37%;
+            bottom: -10px;
             animation-delay: 4s;
         }
 
+        .particle:nth-child(4) {
+            left: 57%;
+            bottom: -10px;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            left: 76%;
+            bottom: -10px;
+            animation-delay: 3s;
+        }
+
         .particle:nth-child(6) {
-            left: 90%;
-            top: 95%;
-            animation-delay: 0s;
+            left: 91%;
+            bottom: -10px;
+            animation-delay: 5s;
         }
 
 
         @keyframes particleMove {
 
-            from {
-
+            0% {
                 transform:
                     translateY(0)
                     translateX(0);
@@ -255,12 +284,15 @@
                 opacity: 0;
             }
 
-            20% {
-                opacity: 0.7;
+            15% {
+                opacity: 0.8;
             }
 
-            to {
+            80% {
+                opacity: 0.3;
+            }
 
+            100% {
                 transform:
                     translateY(-100vh)
                     translateX(100px);
@@ -270,43 +302,31 @@
         }
 
 
-        /* ========================================
-           PAGE
-        ======================================== */
+        /* =====================================================
+           CONTAINER
+        ====================================================== */
 
-        .page {
+        .container {
 
-            position: relative;
-
-            z-index: 2;
-
-            width: min(1400px, 92%);
-
-            min-height: 100vh;
+            width: min(1380px, 92%);
 
             margin: auto;
-
-            padding: 30px 0;
-
-            display: flex;
-
-            flex-direction: column;
         }
 
 
-        /* ========================================
+        /* =====================================================
            HEADER
-        ======================================== */
+        ====================================================== */
 
         header {
+
+            height: 90px;
 
             display: flex;
 
             align-items: center;
 
             justify-content: space-between;
-
-            margin-bottom: 70px;
         }
 
 
@@ -322,84 +342,54 @@
 
             letter-spacing: 2px;
 
-            color: var(--red);
-
-            text-shadow:
-                0 0 15px rgba(255,0,30,0.45);
+            color: white;
         }
 
 
         .brand span {
-            color: white;
+            color: var(--red);
         }
 
 
-        /* Gaming HUD icon */
+        .header-right {
 
-        .hud {
+            display: flex;
 
-            width: 54px;
-            height: 54px;
+            align-items: center;
 
-            display: grid;
-
-            place-items: center;
-
-            border: 1px solid rgba(255,255,255,0.2);
-
-            border-radius: 14px;
-
-            background:
-                rgba(10,12,15,0.7);
-
-            box-shadow:
-                inset 0 0 20px rgba(255,255,255,0.02),
-                0 0 25px rgba(255,0,30,0.08);
-
-            font-size: 21px;
-
-            color: white;
+            gap: 12px;
         }
 
 
-        /* ========================================
-           HERO
-        ======================================== */
+        .header-status {
 
-        .hero {
-
-            text-align: center;
-
-            margin-bottom: 65px;
-        }
-
-
-        .status {
-
-            display: inline-flex;
+            display: flex;
 
             align-items: center;
 
             gap: 9px;
 
-            padding: 7px 15px;
+            padding: 9px 17px;
 
-            margin-bottom: 25px;
-
-            border: 1px solid rgba(255,30,45,0.35);
-
-            border-radius: 50px;
+            border: 1px solid rgba(255,30,50,0.35);
 
             background:
-                rgba(255,20,35,0.06);
+                rgba(0,0,0,0.45);
 
-            color: rgba(255,255,255,0.7);
+            clip-path: polygon(
+                10px 0,
+                calc(100% - 10px) 0,
+                100% 50%,
+                calc(100% - 10px) 100%,
+                10px 100%,
+                0 50%
+            );
 
-            font-size: 12px;
+            font-size: 11px;
 
-            font-weight: 600;
+            font-weight: 700;
 
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
 
             text-transform: uppercase;
         }
@@ -408,6 +398,7 @@
         .status-dot {
 
             width: 7px;
+
             height: 7px;
 
             border-radius: 50%;
@@ -423,7 +414,8 @@
 
         @keyframes pulse {
 
-            0%,100% {
+            0%,
+            100% {
                 opacity: 1;
                 transform: scale(1);
             }
@@ -435,11 +427,98 @@
         }
 
 
+        .gamepad {
+
+            width: 52px;
+
+            height: 52px;
+
+            display: grid;
+
+            place-items: center;
+
+            border: 1px solid rgba(255,255,255,0.18);
+
+            border-radius: 14px;
+
+            background:
+                rgba(0,0,0,0.45);
+
+            font-size: 21px;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+
+            min-height: 650px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+        }
+
+
+        .hero-content {
+
+            max-width: 850px;
+
+            margin-top: -45px;
+        }
+
+
+        .welcome {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            color: var(--red);
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 25px;
+
+            text-transform: uppercase;
+        }
+
+
+        .welcome::before,
+        .welcome::after {
+
+            content: "";
+
+            width: 35px;
+
+            height: 1px;
+
+            background: var(--red);
+
+            box-shadow:
+                0 0 10px var(--red);
+        }
+
+
         .logo {
 
             font-family: "Orbitron", sans-serif;
 
-            font-size: clamp(55px, 9vw, 105px);
+            font-size: clamp(60px, 9vw, 115px);
 
             font-weight: 900;
 
@@ -447,12 +526,10 @@
 
             letter-spacing: 5px;
 
-            line-height: 0.95;
-
-            color: white;
+            line-height: 0.9;
 
             text-shadow:
-                0 0 30px rgba(255,255,255,0.08);
+                0 0 35px rgba(255,255,255,0.08);
         }
 
 
@@ -461,30 +538,165 @@
             color: var(--red);
 
             text-shadow:
-                0 0 15px rgba(255,0,30,0.7),
-                0 0 45px rgba(255,0,30,0.25);
+
+                0 0 15px rgba(255,0,30,0.8),
+
+                0 0 50px rgba(255,0,30,0.25);
         }
 
 
-        .tagline {
+        .hero-tagline {
 
-            margin-top: 20px;
-
-            color: rgba(255,255,255,0.7);
+            margin-top: 28px;
 
             font-family: "Orbitron", sans-serif;
 
-            font-size: 13px;
+            font-size: 14px;
 
             letter-spacing: 6px;
+
+            color: rgba(255,255,255,0.9);
 
             text-transform: uppercase;
         }
 
 
-        /* ========================================
+        .hero-description {
+
+            max-width: 620px;
+
+            margin: 22px auto 0;
+
+            font-size: 18px;
+
+            line-height: 1.6;
+
+            color: rgba(255,255,255,0.62);
+        }
+
+
+        .hero-line {
+
+            width: 100px;
+
+            height: 2px;
+
+            margin: 30px auto 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--red),
+                    transparent
+                );
+
+            box-shadow:
+                0 0 15px var(--red);
+        }
+
+
+        .hero-tags {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .hero-tag {
+
+            padding: 6px 12px;
+
+            border: 1px solid rgba(255,255,255,0.13);
+
+            background:
+                rgba(0,0,0,0.35);
+
+            color: rgba(255,255,255,0.55);
+
+            font-size: 11px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           SECTION
+        ====================================================== */
+
+        .section {
+
+            padding: 90px 0;
+        }
+
+
+        .section-heading {
+
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+
+        .section-kicker {
+
+            color: var(--red);
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 13px;
+        }
+
+
+        .section-title {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(26px, 4vw, 40px);
+
+            letter-spacing: 2px;
+        }
+
+
+        .section-title span {
+            color: var(--red);
+        }
+
+
+        .section-description {
+
+            max-width: 650px;
+
+            margin: 14px auto 0;
+
+            color: var(--muted);
+
+            font-size: 17px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
            SOCIAL GRID
-        ======================================== */
+        ====================================================== */
 
         .social-grid {
 
@@ -497,20 +709,21 @@
         }
 
 
-        /* ========================================
+        /* =====================================================
            SOCIAL CARD
-        ======================================== */
+        ====================================================== */
 
         .social-card {
 
             --accent: white;
+
             --glow: rgba(255,255,255,0.15);
 
             position: relative;
 
-            min-height: 370px;
+            min-height: 365px;
 
-            padding: 32px 25px;
+            padding: 32px 22px;
 
             display: flex;
 
@@ -522,41 +735,42 @@
 
             text-align: center;
 
-            text-decoration: none;
-
             color: white;
+
+            text-decoration: none;
 
             background:
 
                 linear-gradient(
                     145deg,
-                    rgba(20,24,30,0.88),
-                    rgba(3,5,8,0.96)
+                    rgba(18,22,28,0.94),
+                    rgba(2,4,6,0.97)
                 );
 
-            border: 1px solid rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.14);
 
             clip-path: polygon(
-                0 20px,
-                20px 0,
-                calc(100% - 20px) 0,
-                100% 20px,
-                100% calc(100% - 20px),
-                calc(100% - 20px) 100%,
-                20px 100%,
-                0 calc(100% - 20px)
+                0 18px,
+                18px 0,
+                calc(100% - 18px) 0,
+                100% 18px,
+                100% calc(100% - 18px),
+                calc(100% - 18px) 100%,
+                18px 100%,
+                0 calc(100% - 18px)
             );
 
             overflow: hidden;
 
             transition:
-                transform 0.4s cubic-bezier(.2,.8,.2,1),
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+
+                transform .4s cubic-bezier(.2,.8,.2,1),
+
+                border-color .4s ease,
+
+                box-shadow .4s ease;
         }
 
-
-        /* Card top accent */
 
         .social-card::before {
 
@@ -564,9 +778,11 @@
 
             position: absolute;
 
-            top: 0;
             left: 20px;
+
             right: 20px;
+
+            top: 0;
 
             height: 1px;
 
@@ -578,7 +794,7 @@
                     transparent
                 );
 
-            opacity: 0.55;
+            opacity: .7;
         }
 
 
@@ -591,11 +807,12 @@
             position: absolute;
 
             width: 80px;
+
             height: 150%;
 
-            top: -25%;
+            left: -130px;
 
-            left: -120px;
+            top: -25%;
 
             transform: rotate(20deg);
 
@@ -608,37 +825,39 @@
                 );
 
             transition:
-                left 0.7s ease;
+                left .7s ease;
         }
 
 
         .social-card:hover::after {
-
             left: 130%;
         }
 
 
         .social-card:hover {
 
-            transform: translateY(-14px) scale(1.015);
+            transform:
+                translateY(-14px)
+                scale(1.015);
 
             border-color: var(--accent);
 
             box-shadow:
 
-                0 25px 55px rgba(0,0,0,0.65),
+                0 25px 60px rgba(0,0,0,0.65),
 
                 0 0 35px var(--glow);
         }
 
 
-        /* ========================================
-           ICON
-        ======================================== */
+        /* =====================================================
+           SOCIAL ICON
+        ====================================================== */
 
-        .icon-box {
+        .social-icon {
 
             width: 105px;
+
             height: 105px;
 
             display: grid;
@@ -648,7 +867,7 @@
             border-radius: 20px;
 
             background:
-                rgba(8,11,15,0.9);
+                rgba(5,8,12,0.95);
 
             border: 1px solid rgba(255,255,255,0.12);
 
@@ -663,12 +882,14 @@
                 0 0 25px var(--glow);
 
             transition:
-                transform 0.4s ease,
-                box-shadow 0.4s ease;
+
+                transform .4s ease,
+
+                box-shadow .4s ease;
         }
 
 
-        .social-card:hover .icon-box {
+        .social-card:hover .social-icon {
 
             transform:
                 scale(1.08)
@@ -676,29 +897,17 @@
 
             box-shadow:
 
-                inset 0 0 30px rgba(255,255,255,0.03),
+                inset 0 0 30px rgba(255,255,255,0.04),
 
                 0 0 45px var(--glow);
         }
 
 
-        /* ========================================
-           CARD CONTENT
-        ======================================== */
-
-        .card-content {
-
-            position: relative;
-
-            z-index: 2;
-        }
-
-
-        .card-content h2 {
+        .social-name {
 
             font-family: "Orbitron", sans-serif;
 
-            font-size: 16px;
+            font-size: 15px;
 
             letter-spacing: 1px;
 
@@ -706,29 +915,22 @@
         }
 
 
-        .card-content p {
+        .social-text {
+
+            max-width: 175px;
 
             color: var(--muted);
 
             font-size: 15px;
 
             line-height: 1.45;
-
-            max-width: 170px;
         }
 
 
-        /* ========================================
-           BUTTON
-        ======================================== */
-
-        .connect {
-
-            position: relative;
-
-            z-index: 2;
+        .social-button {
 
             width: 125px;
+
             height: 38px;
 
             display: grid;
@@ -737,118 +939,646 @@
 
             border: 1px solid var(--accent);
 
-            color: white;
+            font-size: 13px;
 
-            font-size: 14px;
-
-            font-weight: 600;
+            font-weight: 700;
 
             letter-spacing: 1.5px;
 
             background:
-                rgba(0,0,0,0.35);
+                rgba(0,0,0,0.3);
 
             clip-path: polygon(
-                10px 0,
-                calc(100% - 10px) 0,
+                9px 0,
+                calc(100% - 9px) 0,
                 100% 50%,
-                calc(100% - 10px) 100%,
-                10px 100%,
+                calc(100% - 9px) 100%,
+                9px 100%,
                 0 50%
             );
 
-            transition: 0.3s ease;
+            transition: .3s ease;
         }
 
 
-        .social-card:hover .connect {
-
-            background: var(--accent);
+        .social-card:hover .social-button {
 
             color: #000;
+
+            background: var(--accent);
 
             box-shadow:
                 0 0 25px var(--glow);
         }
 
 
-        /* ========================================
-           PLATFORM THEMES
-        ======================================== */
+        /* Platform colors */
 
         .facebook {
 
-            --accent: var(--facebook);
+            --accent: #1877f2;
 
-            --glow:
-                rgba(24,119,242,0.35);
+            --glow: rgba(24,119,242,0.35);
         }
 
 
         .instagram {
 
-            --accent: var(--instagram);
+            --accent: #ff3cac;
 
-            --glow:
-                rgba(255,60,172,0.35);
+            --glow: rgba(255,60,172,0.35);
         }
 
 
         .youtube {
 
-            --accent: var(--youtube);
+            --accent: #ff2035;
 
-            --glow:
-                rgba(255,30,45,0.35);
+            --glow: rgba(255,32,53,0.35);
         }
 
 
         .x {
 
-            --accent: var(--x);
+            --accent: #ffffff;
 
-            --glow:
-                rgba(255,255,255,0.18);
+            --glow: rgba(255,255,255,0.18);
         }
 
 
         .threads {
 
-            --accent: var(--threads);
+            --accent: #c45cff;
 
-            --glow:
-                rgba(196,92,255,0.35);
+            --glow: rgba(196,92,255,0.35);
         }
 
 
-        /* ========================================
-           FOOTER
-        ======================================== */
+        /* =====================================================
+           JUMPY SECTION
+        ====================================================== */
 
-        footer {
+        .game-section {
 
-            margin-top: auto;
+            position: relative;
 
-            padding-top: 60px;
+            padding: 70px;
 
-            padding-bottom: 15px;
+            background:
+
+                linear-gradient(
+                    125deg,
+                    rgba(10,9,18,0.98),
+                    rgba(3,5,8,0.98)
+                );
+
+            border: 1px solid rgba(196,92,255,0.28);
+
+            clip-path: polygon(
+                0 25px,
+                25px 0,
+                calc(100% - 25px) 0,
+                100% 25px,
+                100% calc(100% - 25px),
+                calc(100% - 25px) 100%,
+                25px 100%,
+                0 calc(100% - 25px)
+            );
+
+            overflow: hidden;
+        }
+
+
+        .game-section::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 78% 50%,
+                    rgba(196,92,255,0.12),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 10% 50%,
+                    rgba(255,30,50,0.06),
+                    transparent 35%
+                );
+
+            pointer-events: none;
+        }
+
+
+        .game-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+
+            height: 400px;
+
+            right: -200px;
+
+            top: -200px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(196,92,255,0.08);
+
+            box-shadow:
+
+                0 0 0 50px rgba(196,92,255,0.015),
+
+                0 0 0 100px rgba(196,92,255,0.01);
+
+            pointer-events: none;
+        }
+
+
+        .game-header {
+
+            position: relative;
 
             text-align: center;
 
-            color: rgba(255,255,255,0.45);
+            margin-bottom: 55px;
+        }
 
-            font-size: 15px;
+
+        .game-kicker {
+
+            font-family: "Orbitron", sans-serif;
+
+            color: var(--purple);
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+        }
+
+
+        .game-title {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: clamp(28px, 4vw, 43px);
+
+            letter-spacing: 2px;
+        }
+
+
+        .game-title span {
+            color: var(--purple);
+        }
+
+
+        .game-subtitle {
+
+            margin-top: 12px;
+
+            color: var(--muted);
+
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+           GAME CONTENT
+        ====================================================== */
+
+        .game-content {
+
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                0.9fr 1.4fr;
+
+            gap: 65px;
+
+            align-items: center;
+        }
+
+
+        /* =====================================================
+           GAME INFO
+        ====================================================== */
+
+        .game-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: flex-start;
+        }
+
+
+        .game-icon {
+
+            width: 145px;
+
+            height: 145px;
+
+            border-radius: 28px;
+
+            object-fit: cover;
+
+            background: #000;
+
+            border: 2px solid rgba(196,92,255,0.45);
+
+            box-shadow:
+
+                0 0 35px rgba(196,92,255,0.20),
+
+                0 20px 50px rgba(0,0,0,0.5);
+
+            margin-bottom: 25px;
+        }
+
+
+        .game-name {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 31px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .game-developer {
+
+            color: var(--purple);
+
+            font-weight: 700;
 
             letter-spacing: 1px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .game-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 20px;
+
+            padding: 7px 12px;
+
+            border: 1px solid rgba(196,92,255,0.25);
+
+            background:
+                rgba(196,92,255,0.06);
+
+            color: rgba(255,255,255,0.65);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .game-badge i {
+            color: var(--purple);
+        }
+
+
+        .game-description {
+
+            color: rgba(255,255,255,0.65);
+
+            font-size: 17px;
+
+            line-height: 1.65;
+
+            max-width: 480px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ====================================================== */
+
+        .features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px 22px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .feature {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: rgba(255,255,255,0.72);
+
+            font-size: 14px;
+        }
+
+
+        .feature i {
+
+            color: var(--purple);
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           GOOGLE PLAY BUTTON
+        ====================================================== */
+
+        .play-store-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 13px 23px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            background: #050608;
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.4);
+
+            transition: .3s ease;
+        }
+
+
+        .play-store-button i {
+
+            font-size: 25px;
+
+            color: #4caf50;
+        }
+
+
+        .play-store-button small {
+
+            display: block;
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+
+            color: rgba(255,255,255,0.7);
+        }
+
+
+        .play-store-button strong {
+
+            display: block;
+
+            font-size: 19px;
+
+            line-height: 1;
+
+            font-family: "Rajdhani", sans-serif;
+        }
+
+
+        .play-store-button:hover {
+
+            transform: translateY(-4px);
+
+            border-color: var(--purple);
+
+            box-shadow:
+                0 12px 35px rgba(196,92,255,0.18);
+        }
+
+
+        /* =====================================================
+           SCREENSHOTS
+        ====================================================== */
+
+        .screenshots {
+
+            position: relative;
+
+            min-width: 0;
+        }
+
+
+        .screenshots-main {
+
+            display: flex;
+
+            gap: 18px;
+
+            overflow-x: auto;
+
+            padding: 15px 5px 25px;
+
+            scrollbar-width: thin;
+
+            scrollbar-color:
+                var(--purple)
+                rgba(255,255,255,0.08);
+        }
+
+
+        .screenshot {
+
+            flex: 0 0 225px;
+
+            height: 400px;
+
+            object-fit: contain;
+
+            border-radius: 20px;
+
+            border: 1px solid rgba(196,92,255,0.30);
+
+            background: #050608;
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.5);
+
+            transition:
+
+                transform .35s ease,
+
+                border-color .35s ease,
+
+                box-shadow .35s ease;
+        }
+
+
+        .screenshot:hover {
+
+            transform:
+                translateY(-10px)
+                scale(1.025);
+
+            border-color: var(--purple);
+
+            box-shadow:
+                0 25px 50px rgba(196,92,255,0.18);
+        }
+
+
+        .screenshot-hint {
+
+            margin-top: 5px;
+
+            text-align: center;
+
+            color: rgba(255,255,255,0.32);
+
+            font-size: 11px;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            padding: 80px 0 40px;
+
+            text-align: center;
+        }
+
+
+        .footer-logo {
+
+            font-family: "Orbitron", sans-serif;
+
+            font-size: 30px;
+
+            font-weight: 900;
+
+            font-style: italic;
+
+            margin-bottom: 25px;
+        }
+
+
+        .footer-logo span {
+            color: var(--red);
+        }
+
+
+        .footer-socials {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .footer-socials a {
+
+            width: 42px;
+
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            color: rgba(255,255,255,0.65);
+
+            border: 1px solid rgba(255,255,255,0.13);
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            transition: .3s ease;
+        }
+
+
+        .footer-socials a:hover {
+
+            color: white;
+
+            border-color: var(--red);
+
+            box-shadow:
+                0 0 20px rgba(255,0,30,0.18);
+
+            transform: translateY(-4px);
+        }
+
+
+        .footer-message {
+
+            color: rgba(255,255,255,0.55);
+
+            font-size: 16px;
+
+            letter-spacing: 1px;
+
+            line-height: 1.7;
         }
 
 
         .footer-line {
 
             width: 100px;
+
             height: 2px;
 
-            margin: 15px auto 0;
+            margin: 17px auto 0;
 
             background:
                 linear-gradient(
@@ -863,11 +1593,13 @@
         }
 
 
-        /* ========================================
+        /* =====================================================
            ACCESSIBILITY
-        ======================================== */
+        ====================================================== */
 
-        .social-card:focus-visible {
+        .social-card:focus-visible,
+        .play-store-button:focus-visible,
+        .footer-socials a:focus-visible {
 
             outline: 2px solid white;
 
@@ -875,11 +1607,11 @@
         }
 
 
-        /* ========================================
+        /* =====================================================
            TABLET
-        ======================================== */
+        ====================================================== */
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1150px) {
 
             .social-grid {
 
@@ -887,30 +1619,46 @@
                     repeat(3, 1fr);
             }
 
-            .social-card {
 
-                min-height: 330px;
+            .game-content {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 45px;
+            }
+
+
+            .game-info {
+
+                align-items: center;
+
+                text-align: center;
+            }
+
+
+            .game-description {
+
+                max-width: 650px;
             }
         }
 
 
-        /* ========================================
+        /* =====================================================
            MOBILE
-        ======================================== */
+        ====================================================== */
 
-        @media (max-width: 700px) {
+        @media (max-width: 750px) {
 
-            .page {
+            .container {
 
                 width: 90%;
-
-                padding-top: 22px;
             }
 
 
             header {
 
-                margin-bottom: 45px;
+                height: 75px;
             }
 
 
@@ -920,9 +1668,16 @@
             }
 
 
-            .hud {
+            .header-status {
+
+                display: none;
+            }
+
+
+            .gamepad {
 
                 width: 45px;
+
                 height: 45px;
 
                 font-size: 18px;
@@ -931,27 +1686,34 @@
 
             .hero {
 
-                margin-bottom: 40px;
+                min-height: 530px;
             }
 
 
-            .status {
+            .welcome {
 
-                font-size: 10px;
-
-                letter-spacing: 1.5px;
-            }
-
-
-            .logo {
-
-                font-size: 52px;
+                font-size: 9px;
 
                 letter-spacing: 3px;
             }
 
 
-            .tagline {
+            .welcome::before,
+            .welcome::after {
+
+                width: 20px;
+            }
+
+
+            .logo {
+
+                font-size: 55px;
+
+                letter-spacing: 3px;
+            }
+
+
+            .hero-tagline {
 
                 font-size: 10px;
 
@@ -961,9 +1723,24 @@
             }
 
 
+            .hero-description {
+
+                font-size: 16px;
+            }
+
+
+            .section {
+
+                padding: 60px 0;
+            }
+
+
+            /* SOCIAL */
+
             .social-grid {
 
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
                 gap: 14px;
             }
@@ -971,18 +1748,18 @@
 
             .social-card {
 
-                min-height: 230px;
-
-                padding: 25px 20px;
+                min-height: 220px;
 
                 display: grid;
 
                 grid-template-columns:
                     75px 1fr auto;
 
-                gap: 18px;
-
                 align-items: center;
+
+                gap: 15px;
+
+                padding: 22px;
 
                 text-align: left;
 
@@ -992,53 +1769,101 @@
             }
 
 
-            .icon-box {
+            .social-icon {
 
                 width: 70px;
+
                 height: 70px;
 
-                border-radius: 14px;
-
                 font-size: 30px;
+
+                border-radius: 14px;
             }
 
 
-            .card-content h2 {
-
-                font-size: 13px;
-            }
-
-
-            .card-content p {
-
-                font-size: 13px;
+            .social-text {
 
                 max-width: none;
+
+                font-size: 13px;
             }
 
 
-            .connect {
+            .social-name {
 
-                width: 95px;
+                font-size: 13px;
+            }
+
+
+            .social-button {
+
+                width: 100px;
 
                 font-size: 11px;
             }
 
 
-            footer {
+            /* JUMPY */
 
-                padding-top: 45px;
+            .game-section {
 
-                padding-bottom: 15px;
+                padding: 40px 20px;
+
+                clip-path: none;
+
+                border-radius: 15px;
+            }
+
+
+            .game-icon {
+
+                width: 120px;
+
+                height: 120px;
+            }
+
+
+            .game-name {
+
+                font-size: 26px;
+            }
+
+
+            .game-description {
+
+                font-size: 15px;
+            }
+
+
+            .features {
+
+                grid-template-columns:
+                    1fr;
+
+                text-align: left;
+            }
+
+
+            .screenshot {
+
+                flex-basis: 180px;
+
+                height: 320px;
             }
         }
 
 
-        /* ========================================
+        /* =====================================================
            SMALL MOBILE
-        ======================================== */
+        ====================================================== */
 
         @media (max-width: 480px) {
+
+            .logo {
+
+                font-size: 47px;
+            }
+
 
             .social-card {
 
@@ -1047,20 +1872,35 @@
             }
 
 
-            .icon-box {
+            .social-icon {
 
                 width: 60px;
+
                 height: 60px;
 
                 font-size: 25px;
             }
 
 
-            .connect {
+            .social-button {
 
                 grid-column: 2;
 
                 width: 105px;
+            }
+
+
+            .hero-tags {
+
+                gap: 6px;
+            }
+
+
+            .hero-tag {
+
+                font-size: 9px;
+
+                padding: 5px 8px;
             }
         }
 
@@ -1072,286 +1912,790 @@
 <body>
 
 
-    <!-- ========================================
+    <!-- =====================================================
          BACKGROUND
-    ======================================== -->
+    ====================================================== -->
 
     <div class="background">
 
-        <div class="grid"></div>
+        <div class="background-image"></div>
+
+        <div class="background-overlay"></div>
 
         <div class="red-glow"></div>
 
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
-        <span class="particle"></span>
+        <div class="tech-grid"></div>
 
     </div>
 
 
-    <!-- ========================================
-         PAGE
-    ======================================== -->
+    <!-- Floating particles -->
 
-    <main class="page">
-
-
-        <!-- HEADER -->
-
-        <header>
-
-            <div class="brand">
-                GT<span>26</span>RS
-            </div>
-
-            <div class="hud">
-
-                <i class="fa-solid fa-gamepad"></i>
-
-            </div>
-
-        </header>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
 
 
 
-        <!-- HERO -->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="container">
+
+            <header>
+
+                <div class="brand">
+
+                    GT<span>26</span>RS
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <div class="header-status">
+
+                        <span class="status-dot"></span>
+
+                        LIVE
+
+                        &nbsp;&nbsp;
+
+                        GAMING COMMUNITY
+
+                    </div>
+
+
+                    <div class="gamepad">
+
+                        <i class="fa-solid fa-gamepad"></i>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
         <section class="hero">
 
-            <div class="status">
+            <div class="hero-content">
 
-                <span class="status-dot"></span>
+                <div class="welcome">
 
-                Gaming Community
+                    WELCOME TO
+
+                </div>
+
+
+                <h1 class="logo">
+
+                    GT<span>26</span>RS
+
+                </h1>
+
+
+                <p class="hero-tagline">
+
+                    LEVEL UP. STAY CONNECTED.
+
+                </p>
+
+
+                <p class="hero-description">
+
+                    Gaming content, racing gameplay
+                    and games built with passion.
+
+                </p>
+
+
+                <div class="hero-tags">
+
+                    <span class="hero-tag">
+                        GAMING
+                    </span>
+
+                    <span class="hero-tag">
+                        RACING
+                    </span>
+
+                    <span class="hero-tag">
+                        GAME DEVELOPMENT
+                    </span>
+
+                </div>
+
+
+                <div class="hero-line"></div>
 
             </div>
 
-
-            <h1 class="logo">
-
-                GT<span>26</span>RS
-
-            </h1>
+        </section>
 
 
-            <p class="tagline">
 
-                Level Up. Stay Connected.
+        <!-- =================================================
+             SOCIAL SECTION
+        ================================================== -->
 
-            </p>
+        <section class="section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <div class="section-kicker">
+
+                        WATCH THE ACTION
+
+                    </div>
+
+
+                    <h2 class="section-title">
+
+                        CONNECT <span>WITH ME</span>
+
+                    </h2>
+
+
+                    <p class="section-description">
+
+                        Racing gameplay recordings,
+                        gaming highlights and new videos
+                        across my channels.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     SOCIAL CARDS
+                ========================================== -->
+
+                <div class="social-grid">
+
+
+                    <!-- FACEBOOK -->
+
+                    <a
+                        href="https://www.facebook.com/gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-card facebook"
+                        aria-label="GT26RS Facebook"
+                    >
+
+                        <div class="social-icon">
+
+                            <i class="fa-brands fa-facebook-f"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3 class="social-name">
+
+                                FACEBOOK
+
+                            </h3>
+
+
+                            <p class="social-text">
+
+                                Racing gameplay,
+                                updates and new videos.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="social-button">
+
+                            CONNECT
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- INSTAGRAM -->
+
+                    <a
+                        href="https://instagram.com/gt26rs/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-card instagram"
+                        aria-label="GT26RS Instagram"
+                    >
+
+                        <div class="social-icon">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3 class="social-name">
+
+                                INSTAGRAM
+
+                            </h3>
+
+
+                            <p class="social-text">
+
+                                Racing clips,
+                                highlights and moments.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="social-button">
+
+                            FOLLOW
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- YOUTUBE -->
+
+                    <a
+                        href="https://youtube.com/@gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-card youtube"
+                        aria-label="GT26RS YouTube"
+                    >
+
+                        <div class="social-icon">
+
+                            <i class="fa-brands fa-youtube"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3 class="social-name">
+
+                                YOUTUBE
+
+                            </h3>
+
+
+                            <p class="social-text">
+
+                                Full racing gameplay,
+                                walkthroughs and videos.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="social-button">
+
+                            SUBSCRIBE
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- X -->
+
+                    <a
+                        href="https://x.com/gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-card x"
+                        aria-label="GT26RS X"
+                    >
+
+                        <div class="social-icon">
+
+                            <i class="fa-brands fa-x-twitter"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3 class="social-name">
+
+                                X / TWITTER
+
+                            </h3>
+
+
+                            <p class="social-text">
+
+                                Quick gaming updates,
+                                news and announcements.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="social-button">
+
+                            FOLLOW
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- THREADS -->
+
+                    <a
+                        href="https://threads.com/gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-card threads"
+                        aria-label="GT26RS Threads"
+                    >
+
+                        <div class="social-icon">
+
+                            <i class="fa-brands fa-threads"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h3 class="social-name">
+
+                                THREADS
+
+                            </h3>
+
+
+                            <p class="social-text">
+
+                                Join the conversation
+                                and gaming community.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="social-button">
+
+                            CONNECT
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
 
         </section>
 
 
 
-        <!-- ========================================
-             SOCIAL LINKS
-        ======================================== -->
+        <!-- =================================================
+             JUMPY
+        ================================================== -->
 
-        <section class="social-grid">
+        <section class="section">
+
+            <div class="container">
 
 
-            <!-- FACEBOOK -->
+                <div class="game-section">
 
-            <a
-                href="https://facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-card facebook"
-                aria-label="Visit GT26RS on Facebook"
-            >
 
-                <div class="icon-box">
+                    <!-- GAME HEADER -->
 
-                    <i class="fa-brands fa-facebook-f"></i>
+                    <div class="game-header">
+
+                        <div class="game-kicker">
+
+                            BUILT BY GT26RS
+
+                        </div>
+
+
+                        <h2 class="game-title">
+
+                            MY GAME ON <span>PLAY STORE</span>
+
+                        </h2>
+
+
+                        <p class="game-subtitle">
+
+                            A game developed by me
+                            and published on Google Play.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- GAME CONTENT -->
+
+                    <div class="game-content">
+
+
+                        <!-- =================================
+                             GAME INFO
+                        ================================== -->
+
+                        <div class="game-info">
+
+
+                            <!-- Actual Jumpy icon -->
+
+                            <img
+                                class="game-icon"
+                                src="https://play-lh.googleusercontent.com/rDdAusiqItpcLUbinE0GLPJ5uAw2zNNG6788muiqhcBAIzSTGdoDapJHNyGnkBPGSX2pycn2WkpNXq2kroa_0Q=w240-h480"
+                                alt="Jumpy game icon"
+                            >
+
+
+                            <h3 class="game-name">
+
+                                JUMPY
+
+                            </h3>
+
+
+                            <div class="game-developer">
+
+                                GT26RS
+
+                            </div>
+
+
+                            <div class="game-badge">
+
+                                <i class="fa-brands fa-google-play"></i>
+
+                                GAME DEVELOPER · GOOGLE PLAY PUBLISHED
+
+                            </div>
+
+
+                            <p class="game-description">
+
+                                Join Jumpy Bird in a fast-paced
+                                arcade adventure.
+
+                                Collect falling fruits, avoid
+                                dangerous wolves and survive
+                                as long as you can while chasing
+                                a new high score.
+
+                            </p>
+
+
+
+                            <!-- FEATURES -->
+
+                            <div class="features">
+
+
+                                <div class="feature">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Fast-paced arcade gameplay
+
+                                </div>
+
+
+                                <div class="feature">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Simple tap & hold controls
+
+                                </div>
+
+
+                                <div class="feature">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Collect fruits & score higher
+
+                                </div>
+
+
+                                <div class="feature">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Avoid dangerous wolves
+
+                                </div>
+
+
+                                <div class="feature">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Power-ups & bonuses
+
+                                </div>
+
+
+                                <div class="feature">
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Offline play
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- GOOGLE PLAY -->
+
+                            <a
+                                href="https://play.google.com/store/apps/details?id=com.roshansourav.jumpy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="play-store-button"
+                                aria-label="Play Jumpy on Google Play"
+                            >
+
+                                <i class="fa-brands fa-google-play"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        GET IT ON
+
+                                    </small>
+
+                                    <strong>
+
+                                        Google Play
+
+                                    </strong>
+
+                                </span>
+
+                            </a>
+
+                        </div>
+
+
+
+                        <!-- =================================
+                             SCREENSHOTS
+                        ================================== -->
+
+                        <div class="screenshots">
+
+
+                            <div class="screenshots-main">
+
+
+                                <!-- Actual Play Store screenshots -->
+
+                                <img
+                                    class="screenshot"
+                                    src="https://play-lh.googleusercontent.com/Fz7yQfPZ2xrsYgr4MU4mRSAxUyieJ0CNuoPt9JtwOcX8yXRzNqX2FzvdFQcCshr0sUidFFdvkCQdf8a6ybJleks=w526-h296"
+                                    alt="Jumpy main menu"
+                                >
+
+
+                                <img
+                                    class="screenshot"
+                                    src="https://play-lh.googleusercontent.com/M4Nnw9Er24F2FEylUjjPclBwzZ64Lpa8MLd3l6_X5NnyibguoQX0AJ-oPOK_50wWnSusDpUHGVmnbXnOYG0hCQ=w526-h296"
+                                    alt="Jumpy loading screen"
+                                >
+
+
+                                <img
+                                    class="screenshot"
+                                    src="https://play-lh.googleusercontent.com/wwQCOMbp7T3UViWOQhAHV8fy4A5f0oQam5tAqJquO7oiEtrIYKhUPZsOZAdznBfs5peJw1qW-ueZDWaU2wzD=w526-h296"
+                                    alt="Jumpy gameplay"
+                                >
+
+
+                                <img
+                                    class="screenshot"
+                                    src="https://play-lh.googleusercontent.com/YRmQQRMkbeS-4FBpdBN01Hb4LmFxvDHRnS8MdqV1nt5mJUMZv9em-LPcMaPrT2KVL_n3VvTMXKl2tYhHeqIU=w526-h296"
+                                    alt="Jumpy profiles"
+                                >
+
+
+                                <img
+                                    class="screenshot"
+                                    src="https://play-lh.googleusercontent.com/Zcbo5RWhwkZqXOdVco8OgfuXGUHxAAgRdxowJbU1v-tALV4qGujZzoX8hvUfTfD0YvIo6glOJBNaJL-0t68YD4E=w526-h296"
+                                    alt="Jumpy new user screen"
+                                >
+
+                            </div>
+
+
+                            <div class="screenshot-hint">
+
+                                ← SCROLL TO EXPLORE GAMEPLAY →
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-
-                <div class="card-content">
-
-                    <h2>FACEBOOK</h2>
-
-                    <p>
-                        Join the community
-                        and stay updated.
-                    </p>
-
-                </div>
-
-
-                <div class="connect">
-                    CONNECT
-                </div>
-
-            </a>
-
-
-
-            <!-- INSTAGRAM -->
-
-            <a
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-card instagram"
-                aria-label="Visit GT26RS on Instagram"
-            >
-
-                <div class="icon-box">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>INSTAGRAM</h2>
-
-                    <p>
-                        Behind the scenes,
-                        clips and updates.
-                    </p>
-
-                </div>
-
-
-                <div class="connect">
-                    FOLLOW
-                </div>
-
-            </a>
-
-
-
-            <!-- YOUTUBE -->
-
-            <a
-                href="https://youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-card youtube"
-                aria-label="Visit GT26RS on YouTube"
-            >
-
-                <div class="icon-box">
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>YOUTUBE</h2>
-
-                    <p>
-                        Gameplay, videos,
-                        walkthroughs and more.
-                    </p>
-
-                </div>
-
-
-                <div class="connect">
-                    SUBSCRIBE
-                </div>
-
-            </a>
-
-
-
-            <!-- X -->
-
-            <a
-                href="https://x.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-card x"
-                aria-label="Visit GT26RS on X"
-            >
-
-                <div class="icon-box">
-
-                    <i class="fa-brands fa-x-twitter"></i>
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>X / TWITTER</h2>
-
-                    <p>
-                        Quick updates,
-                        news and announcements.
-                    </p>
-
-                </div>
-
-
-                <div class="connect">
-                    FOLLOW
-                </div>
-
-            </a>
-
-
-
-            <!-- THREADS -->
-
-            <a
-                href="https://threads.net/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="social-card threads"
-                aria-label="Visit GT26RS on Threads"
-            >
-
-                <div class="icon-box">
-
-                    <i class="fa-brands fa-threads"></i>
-
-                </div>
-
-
-                <div class="card-content">
-
-                    <h2>THREADS</h2>
-
-                    <p>
-                        Join the conversation
-                        with the community.
-                    </p>
-
-                </div>
-
-
-                <div class="connect">
-                    CONNECT
-                </div>
-
-            </a>
-
+            </div>
 
         </section>
 
 
 
-        <!-- FOOTER -->
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
         <footer>
 
-            Thanks for being part of the journey!
+            <div class="container">
 
-            <div class="footer-line"></div>
+
+                <div class="footer-logo">
+
+                    GT<span>26</span>RS
+
+                </div>
+
+
+                <div class="footer-socials">
+
+
+                    <a
+                        href="https://www.facebook.com/gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                    >
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://instagram.com/gt26rs/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                    >
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://youtube.com/@gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="YouTube"
+                    >
+
+                        <i class="fa-brands fa-youtube"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://x.com/gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="X"
+                    >
+
+                        <i class="fa-brands fa-x-twitter"></i>
+
+                    </a>
+
+
+                    <a
+                        href="https://threads.com/gt26rs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Threads"
+                    >
+
+                        <i class="fa-brands fa-threads"></i>
+
+                    </a>
+
+
+                </div>
+
+
+                <p class="footer-message">
+
+                    Thanks for being part of the journey.
+
+                    <br>
+
+                    Let's keep gaming.
+                    Let's keep racing.
+
+                </p>
+
+
+                <div class="footer-line"></div>
+
+            </div>
 
         </footer>
-
 
     </main>
 
